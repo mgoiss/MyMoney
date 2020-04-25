@@ -15,6 +15,12 @@ namespace MyMoney.Telas
 		public TelaCadastro ()
 		{
 			InitializeComponent ();
-		}
+        }
+
+        private void VamosLa(object sender, EventArgs args)
+        {
+            //TODO: Verificar se os dados obrigatorios foram preenchidos e se foi adicionado ao banco
+            App.Current.MainPage = new TelaLogin();
+        }
 	}
 }

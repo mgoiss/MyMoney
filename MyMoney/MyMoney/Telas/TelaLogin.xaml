@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyMoney.Telas.TelaLogin"
+             BackgroundColor="#EFEEF5">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <AbsoluteLayout Padding="10, 0, 10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+                <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 1" VerticalOptions="Center">
+                    <!--Imagem-->
+                    <Image Source="Logo.png" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+                    <StackLayout Margin="10">
+                        <Label Text="FAÇA SEU LOGIN" Margin="0, 0, 0, 10" HorizontalTextAlignment="Start" TextColor="#000000" FontSize="Large" LineHeight="1.0" FontFamily = "{StaticResource LightItalic}" />
+                        <Entry Placeholder="Senha Alfanumérica" Keyboard="Numeric"  x:Name="txtSenha" FontSize="Medium" BackgroundColor="#FFFFFF" IsPassword="True"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="10, 20, 10, 20" VerticalOptions="CenterAndExpand">
+                        <!--Imagem-->
+                        <Image Source="FotoLogin.png" />
+                    </StackLayout>
+
+                </StackLayout>
+
+            </AbsoluteLayout>
+
+            <Button BackgroundColor="#c12028" TextColor="White" BorderRadius="0" Text="ACESSAR" FontSize="Large" VerticalOptions="EndAndExpand" FontFamily = "{StaticResource BlackItalic}" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
