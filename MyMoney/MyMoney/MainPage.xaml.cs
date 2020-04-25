@@ -16,10 +16,11 @@ namespace MyMoney
 
             this.BindingContext = new ModeloVisual();
         }
-        /*
+ 
         private void Comecar(object sender, EventArgs e)
         {
-            App.Current.MainPage = new Abas();
-        }*/
+            //TODO: Colocar um teste, para analisar se é o primeiro acesso ao sistema
+            App.Current.MainPage = new Telas.TelaCadastro();
+        }
     }
 }

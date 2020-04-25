@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyMoney.App">
     <Application.Resources>
-
+        <OnPlatform x:TypeArguments="x:String" x:Key="LightItalic">
+            <On Platform="Android" Value="Exo2-LightItalic.ttf#Exo2-LightItalic" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="BlackItalic">
+            <On Platform="Android" Value="Exo2-BlackItalic.ttf#Exo2-BlackItalic" />
+        </OnPlatform>
     </Application.Resources>
 </Application>
