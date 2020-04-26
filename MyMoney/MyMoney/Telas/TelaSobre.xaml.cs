@@ -10,17 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace MyMoney.Telas
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TelaLogin : ContentPage
+	public partial class TelaSobre : ContentPage
 	{
-		public TelaLogin ()
+		public TelaSobre ()
 		{
 			InitializeComponent ();
 		}
-
-        private void Acessar(object sender, EventArgs args)
-        {
-            //TODO: Verificar a senha
-            App.Current.MainPage = new Abas();
-        }
 	}
 }

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:aba="clr-namespace:MyMoney.Telas"
+             x:Class="MyMoney.Telas.Abas"
+            BarBackgroundColor="#E02041">
+
+    <NavigationPage BarBackgroundColor="#E02041" Icon="Icon_Home.png">
+        <x:Arguments>
+            <aba:TelaPrincipal />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage BarBackgroundColor="#E02041" Icon="Icon_Sobre">
+        <x:Arguments>
+            <aba:TelaSobre/>
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>
