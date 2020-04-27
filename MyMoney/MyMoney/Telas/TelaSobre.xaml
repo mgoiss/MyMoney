@@ -4,26 +4,6 @@
              x:Class="MyMoney.Telas.TelaSobre"
              BackgroundColor="#E02041">
 
-    <NavigationPage.TitleView>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <!-- Definindo as Colunas -->
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <!-- Definindo as linhas -->
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <Image Grid.Column="0" Grid.Row="0" Source="Logo_Branca.png" HeightRequest="70" WidthRequest="120"/>
-            
-            <!--//TODO: Descobri pq quando coloco um imgemButton aki fica bugado (aparetemente é pq na tela principal tbm tem na Barra do Navigation)-->
-            <Button Margin="10, 0, 10, 0" Grid.Column="1" Grid.Row="0" Image="LogoSair.png" BackgroundColor="#E02041" HeightRequest="45" WidthRequest="45" VerticalOptions="Center" HorizontalOptions="End"/>
-        </Grid>
-    </NavigationPage.TitleView>
-
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Margin="20" VerticalOptions="Center">

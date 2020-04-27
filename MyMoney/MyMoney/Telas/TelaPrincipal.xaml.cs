@@ -16,5 +16,18 @@ namespace MyMoney.Telas
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void DetalheConta(object sender, EventArgs args)
+        {
+            //TODO: Passar o id da conta para puxar os dados na tela de detalhe
+            Navigation.PushAsync(new TelaDetalheConta());
+            //App.Current.MainPage = new NavigationPage(new TelaDetalheConta());
+        }
+
+        private void CriarConta(object sender, EventArgs args)
+        {
+            //TODO: Passar o id da conta para puxar os dados na tela de detalhe
+            Navigation.PushModalAsync(new TelaCriarConta());
+        }
+    }
 }

@@ -11,6 +11,12 @@ namespace MyMoney
         {
             InitializeComponent();
 
+            //MainPage = new NavigationPage(new Telas.TelaPrincipal());
+            //MainPage = new NavigationPage(new Telas.Abas()); 
+            //MainPage = new NavigationPage(new MainPage());
+            //MainPage = new Telas.Abas();
+            //App.Current.MainPage = new NavigationPage(new Telas.Abas()) { BarBackgroundColor = Color.FromHex("#E02041") };
+
             MainPage = new MainPage();
         }
 

@@ -20,7 +20,8 @@ namespace MyMoney.Telas
         private void Acessar(object sender, EventArgs args)
         {
             //TODO: Verificar a senha
-            App.Current.MainPage = new Abas();
+            //App.Current.MainPage = new Abas();
+            App.Current.MainPage = new NavigationPage(new Abas()) { BarBackgroundColor = Color.FromHex("#E02041")};
         }
 	}
 }

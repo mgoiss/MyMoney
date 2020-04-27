@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="MyMoney.Telas.TelaDetalheConta"
+             BackgroundColor="#EFEEF5">
+    
+    <!--Barra do Navegation-->
+    <NavigationPage.TitleView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!-- Definindo as Colunas -->
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <!-- Definindo as linhas -->
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Image Grid.Column="0" Grid.Row="0" Source="Logo_Branca.png" HeightRequest="60" WidthRequest="120" VerticalOptions="Center"/>
+
+            <Label Margin="10, 0, 10, 0" Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="Start" LineHeight="1.0" HorizontalOptions="End" VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="R$ " TextColor="#000000" FontFamily = "{StaticResource LightItalic}"  FontSize="Micro"/>
+                        <Span Text="1000,00" TextColor="#FFFFFF" FontFamily = "{StaticResource BlackItalic}" FontSize="Medium"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <!--<ImageButton Margin="10, 0, 10, 0" Grid.Column="1" Grid.Row="0" Source="LogoSair.png" BackgroundColor="#E02041" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="End"/>-->
+        </Grid>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+
+        <StackLayout Margin="10, 40, 10, 0">
+            
+            <!--Titulo com algumas informações e opções de filtragem-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <!-- Definindo as Colunas -->
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <!-- Definindo as linhas -->
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Text="NUCONTA " TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start" LineHeight="1.0" HorizontalOptions="Start" VerticalOptions="End" />
+                <Label Grid.Column="1" Grid.Row="0" Text="R$500" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="30" HorizontalTextAlignment="End" LineHeight="1.0" HorizontalOptions="End" VerticalOptions="Center" />
+
+                <Label Margin="0, 15, 0, 0" Grid.Column="0" Grid.Row="1" Text="Movimentação " TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start" LineHeight="1.0" HorizontalOptions="Start" VerticalOptions="Center" />
+                <StackLayout Margin="0, 15, 0, 0" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" HorizontalOptions="End">
+                    <Button Padding="10" Image="Remover.png" BorderRadius="10" BorderWidth="1" BorderColor="#9A9A9A" BackgroundColor="#EFEEF5" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="End"/>
+                    <Button  Padding="10" Image="Adicionar.png" BorderRadius="10" BorderWidth="1" BorderColor="#9A9A9A" BackgroundColor="#EFEEF5" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="End"/>
+                </StackLayout>
+
+                <StackLayout Margin="0, 5, 0, 0" Orientation="Horizontal" Grid.Column="0" Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="#E0E1E2">
+                    <Picker x:Name="pcFiltro" HorizontalOptions="StartAndExpand" Title="FILTRO   " FontFamily = "{StaticResource LightItalic}">
+                        <Picker.Items>
+                            <x:String>Depósito</x:String>
+                            <x:String>Saque</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+                <StackLayout Margin="0, 5, 0, 0" Orientation="Horizontal" Grid.Column="1" Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="#E0E1E2">
+                    <DatePicker x:Name="pcData" HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily = "{StaticResource LightItalic}"/>
+                </StackLayout>
+            </Grid>
+
+            <!--Depositos de Saques da Conta-->
+            <ScrollView>
+                <StackLayout Margin="0, 20, 0, 0">
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+
+                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Definindo as Colunas -->
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <!-- Definindo as linhas -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </pancake:PancakeView>
+                    
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

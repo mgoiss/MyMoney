@@ -5,14 +5,35 @@
              x:Class="MyMoney.Telas.Abas"
             BarBackgroundColor="#E02041">
 
-    <NavigationPage BarBackgroundColor="#E02041" Icon="Icon_Home.png">
-        <x:Arguments>
-            <aba:TelaPrincipal />
-        </x:Arguments>
-    </NavigationPage>
-    <NavigationPage BarBackgroundColor="#E02041" Icon="Icon_Sobre">
-        <x:Arguments>
-            <aba:TelaSobre/>
-        </x:Arguments>
-    </NavigationPage>
+    <NavigationPage.TitleView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!-- Definindo as Colunas -->
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <!-- Definindo as linhas -->
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Image Grid.Column="0" Grid.Row="0" Source="Logo_Branca.png" HeightRequest="60" WidthRequest="120" VerticalOptions="Center"/>
+
+            <Label Margin="10, 0, 10, 0" Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="Start" LineHeight="1.0" HorizontalOptions="End" VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="R$ " TextColor="#000000" FontFamily = "{StaticResource LightItalic}"  FontSize="Micro"/>
+                        <Span Text="1000,00" TextColor="#FFFFFF" FontFamily = "{StaticResource BlackItalic}" FontSize="Medium"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <!--<ImageButton Margin="10, 0, 10, 0" Grid.Column="1" Grid.Row="0" Source="LogoSair.png" BackgroundColor="#E02041" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="End"/>-->
+        </Grid>
+    </NavigationPage.TitleView>
+
+    <aba:TelaPrincipal Icon="Icon_Home.png"/>
+    <aba:TelaSobre  Icon="Icon_Sobre"/>
+
+
 </TabbedPage>
