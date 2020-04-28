@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MyMoney.Telas
+namespace MyMoney.Telas.Popup
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TelaCriarConta : ContentPage
+	public partial class PopupSaque
 	{
-		public TelaCriarConta ()
+		public PopupSaque ()
 		{
 			InitializeComponent ();
 		}

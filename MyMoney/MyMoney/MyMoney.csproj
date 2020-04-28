@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.220655" />
     <PackageReference Include="Xamarin.Forms.CarouselView" Version="2.3.0-pre2" />
     <PackageReference Include="Xamarin.Forms.PageControl" Version="1.1.0" />
@@ -20,10 +21,19 @@
     <EmbeddedResource Update="Telas\Abas.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Telas\TelaCadastro.xaml">
+    <EmbeddedResource Update="Telas\Popup\PopupCriarConta.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Telas\TelaCriarConta.xaml">
+    <EmbeddedResource Update="Telas\Popup\PopupDeposito.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Telas\Popup\PopupDetalhe.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Telas\Popup\PopupSaque.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Telas\TelaCadastro.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Telas\TelaDetalheConta.xaml">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MyMoney.Telas.Popup;
 
 namespace MyMoney.Telas
 {
@@ -24,10 +26,9 @@ namespace MyMoney.Telas
             //App.Current.MainPage = new NavigationPage(new TelaDetalheConta());
         }
 
-        private void CriarConta(object sender, EventArgs args)
+        private async void CriarConta(object sender, EventArgs e)
         {
-            //TODO: Passar o id da conta para puxar os dados na tela de detalhe
-            Navigation.PushModalAsync(new TelaCriarConta());
+            await PopupNavigation.PushAsync(new PopupCriarConta());
         }
     }
 }
