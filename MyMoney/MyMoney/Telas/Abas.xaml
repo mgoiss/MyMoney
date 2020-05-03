@@ -24,7 +24,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="R$ " TextColor="#000000" FontFamily = "{StaticResource LightItalic}"  FontSize="Micro"/>
-                        <Span Text="1000,00" TextColor="#FFFFFF" FontFamily = "{StaticResource BlackItalic}" FontSize="Medium"/>
+                        <Span TextColor="#FFFFFF" FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" x:Name="Total"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>

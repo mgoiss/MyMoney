@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MyMoney.Telas.Popup;
+using MyMoney.Banco;
+using MyMoney.Modelo;
 
 namespace MyMoney.Telas
 {
@@ -17,6 +19,12 @@ namespace MyMoney.Telas
 		public TelaPrincipal ()
 		{
 			InitializeComponent ();
+
+            DataBase cont = new DataBase();
+            var Contas = cont.ListarContas();
+
+
+            ListaConta.ItemsSource = Contas;
 		}
 
         private void DetalheConta(object sender, EventArgs args)
@@ -29,6 +37,13 @@ namespace MyMoney.Telas
         private async void CriarConta(object sender, EventArgs e)
         {
             await PopupNavigation.PushAsync(new PopupCriarConta());
+
+            App.Current.MainPage = new NavigationPage(new Abas()) { BarBackgroundColor = Color.FromHex("#E02041") }; //Chamando novamente a aba para que seja recarregado o valor total
+        }
+
+        private void ListaConta_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
         }
     }
 }

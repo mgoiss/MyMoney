@@ -22,112 +22,69 @@
                 <Button Grid.Column="1" Padding="10" Grid.Row="0" Image="Adicionar.png" BorderRadius="10" BorderWidth="1" BorderColor="#9A9A9A" BackgroundColor="#EFEEF5" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="End" Clicked="CriarConta"/>
             </Grid>
 
-            <ScrollView>
-                <StackLayout Margin="0, 20, 0, 0">
+            <ScrollView Margin="0, 20, 0, 0">
+
+
+                <ListView x:Name="ListaConta" HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+
+
+                                <StackLayout Margin="0, 0, 0, 15">
+                                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="15">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <!-- Definindo as Colunas -->
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <!-- Definindo as linhas -->
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding NomeConta}" TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+
+                                            <Label Grid.Column="1" Grid.Row="0" TextColor="#E02041" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="R$" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource BlackItalic}"  FontSize="Large"/>
+
+                                                        <Span Text="{Binding ValorConta}" TextColor="{Binding TituloCor}" FontFamily = "{StaticResource BlackItalic}" FontSize="Large"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <Label Grid.Column="0" Grid.Row="1" Text="Ultimo Depósito: " TextColor="#000000"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                                            <Label Grid.Column="1" Grid.Row="1" Text="R$00,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+
+                                            <Label Grid.Column="1" Grid.Row="2" Text="00/00/0000 " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+
+                                            <Label Grid.Column="0" Grid.Row="3" Text="Ultimo Saque: " TextColor="#000000"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                                            <Label Grid.Column="1" Grid.Row="3" Text="R$00,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+
+                                            <Label Grid.Column="1" Grid.Row="4" Text="00/00/0000 " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+
+
+                                            <Button Grid.Column="1" Grid.Row="5" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End" Clicked="DetalheConta"/>
+                                        </Grid>
+                                    </pancake:PancakeView>
+                                </StackLayout>
+                                
+                                    
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                     
-                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="15">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <!-- Definindo as Colunas -->
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <!-- Definindo as linhas -->
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
+                    
 
-                            <Label Grid.Column="0" Grid.Row="0" Text="Nuconta " TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Grid.Row="0" Text="R$500,00 " TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="0" Grid.Row="1" Text="Ultimo Depósito: " TextColor="#000000"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Grid.Row="1" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="1" Grid.Row="2" Text="01/01/2020 " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="0" Grid.Row="3" Text="Ultimo Saque: " TextColor="#000000"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Grid.Row="3" Text="R$100,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="1" Grid.Row="4" Text="11/12/2019 " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Button Grid.Column="1" Grid.Row="5" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End" Clicked="DetalheConta"/>
-                        </Grid>
-                    </pancake:PancakeView>
-
-                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20"   Padding="15">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <!-- Definindo as Colunas -->
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <!-- Definindo as linhas -->
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <Label Grid.Column="0" Grid.Row="0" Text="Inter " TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Grid.Row="0" Text="R$500,00 " TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="0" Grid.Row="1" Text="Ultimo Depósito: " TextColor="#000000"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Grid.Row="1" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="1" Grid.Row="2" Text="01/01/2020 " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="0" Grid.Row="3" Text="Ultimo Saque: " TextColor="#000000"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Grid.Row="3" Text="R$100,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="1" Grid.Row="4" Text="11/12/2019 " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Button Grid.Column="1" Grid.Row="5" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End" Clicked="DetalheConta"/>
-                        </Grid>
-                    </pancake:PancakeView>
-
-                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20"   Padding="15">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <!-- Definindo as Colunas -->
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <!-- Definindo as linhas -->
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <Label Grid.Column="0" Grid.Row="0" Text="Neon " TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Grid.Row="0" Text="R$00,00 " TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="0" Grid.Row="1" Text="Ultimo Depósito: " TextColor="#000000"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Grid.Row="1" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="1" Grid.Row="2" Text="01/01/2020 " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="0" Grid.Row="3" Text="Ultimo Saque: " TextColor="#000000"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Grid.Row="3" Text="R$100,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Label Grid.Column="1" Grid.Row="4" Text="11/12/2019 " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                            <Button Grid.Column="1" Grid.Row="5" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End" Clicked="DetalheConta"/>
-                        </Grid>
-                    </pancake:PancakeView>
-
-                </StackLayout>
             </ScrollView>
         </StackLayout>
     </ContentPage.Content>
