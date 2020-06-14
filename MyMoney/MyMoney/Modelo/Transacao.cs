@@ -17,5 +17,19 @@ namespace MyMoney.Modelo
 
         [Indexed]
         public int ContaId { get; set; }
+
+        public Transacao()
+        {
+        }
+
+        public Transacao(Transacao Trans)
+        {
+            CodTransacao = Trans.CodTransacao;
+            ValorTransacao = Trans.ValorTransacao;
+            DescTransacao = Trans.DescTransacao;
+            DataTransacao = Trans.DataTransacao;
+            TipoTransacao = Trans.TipoTransacao;
+            ContaId = Trans.ContaId;
+        }
     }
 }

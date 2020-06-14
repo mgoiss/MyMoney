@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using MyMoney.Telas.Popup;
 using MyMoney.Banco;
 using MyMoney.Modelo;
+using System.Diagnostics;
 
 namespace MyMoney.Telas
 {
@@ -30,8 +31,30 @@ namespace MyMoney.Telas
         private void DetalheConta(object sender, EventArgs args)
         {
             //TODO: Passar o id da conta para puxar os dados na tela de detalhe
-            Navigation.PushAsync(new TelaDetalheConta());
+            Label lblDetalhe = (Label)sender;
+            TapGestureRecognizer tapGest = ((TapGestureRecognizer)lblDetalhe.GestureRecognizers[0]);
+            Conta conta = tapGest.CommandParameter as Conta;
+
+            Navigation.PushAsync(new TelaDetalheConta(conta));
             //App.Current.MainPage = new NavigationPage(new TelaDetalheConta());
+        }
+
+        private async void ApagarConta(object sender, EventArgs e)
+        {
+            //TODO: Passar o id da conta para puxar os dados na tela de detalhe
+            Button btnDetalhe = (Button)sender;
+            TapGestureRecognizer tapGest = ((TapGestureRecognizer)btnDetalhe.GestureRecognizers[0]);
+            Conta conta = tapGest.CommandParameter as Conta;
+
+            bool resultado = await DisplayAlert(conta.NomeConta, "Deseja apagar a conta?", "Sim", "Não");
+            if (resultado == true)
+            {
+                DataBase data = new DataBase();
+
+                data.ApagarConta(conta);
+
+                App.Current.MainPage = new NavigationPage(new Abas()) { BarBackgroundColor = Color.FromHex("#E02041") }; //Chamando novamente a aba para que seja recarregado o valor total
+            }
         }
 
         private async void CriarConta(object sender, EventArgs e)
@@ -39,11 +62,6 @@ namespace MyMoney.Telas
             await PopupNavigation.PushAsync(new PopupCriarConta());
 
             App.Current.MainPage = new NavigationPage(new Abas()) { BarBackgroundColor = Color.FromHex("#E02041") }; //Chamando novamente a aba para que seja recarregado o valor total
-        }
-
-        private void ListaConta_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-
         }
     }
 }

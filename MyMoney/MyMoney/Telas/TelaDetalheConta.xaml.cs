@@ -8,15 +8,18 @@ using MyMoney.Telas.Popup;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MyMoney.Modelo;
 
 namespace MyMoney.Telas
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TelaDetalheConta : ContentPage
 	{
-		public TelaDetalheConta ()
+		public TelaDetalheConta ( Conta conta)
 		{
 			InitializeComponent ();
+
+            BindingContext = conta;
 		}
 
         private async void Depositar(object sender, EventArgs e)
