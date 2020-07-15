@@ -19,20 +19,10 @@ namespace MyMoney
 
             this.BindingContext = new ModeloVisual();
         }
- 
+
         private void Comecar(object sender, EventArgs e)
         {
-            //TODO: Colocar um teste, para analisar se é o primeiro acesso ao sistema
-            var usuario = new DataBase();
-
-            if(usuario.VerificarExistenciaUsuario() == true)
-            {
-                App.Current.MainPage = new TelaLogin();
-            }
-            else
-            {
-                App.Current.MainPage = new TelaCadastro();
-            }
+            App.Current.MainPage = new TelaCadastro();
         }
     }
 }

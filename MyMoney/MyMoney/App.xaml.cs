@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyMoney.Banco;
+using MyMoney.Telas;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,7 +19,18 @@ namespace MyMoney
             //MainPage = new Telas.Abas();
             //App.Current.MainPage = new NavigationPage(new Telas.Abas()) { BarBackgroundColor = Color.FromHex("#E02041") };
 
-            MainPage = new MainPage();
+            var usuario = new DataBase();
+
+            if (usuario.VerificarExistenciaUsuario() == true)
+            {
+                App.Current.MainPage = new TelaLogin();
+            }
+            else
+            {
+                App.Current.MainPage = new MainPage();
+            }
+
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()

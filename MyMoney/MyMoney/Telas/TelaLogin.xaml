@@ -14,7 +14,7 @@
 
                     <StackLayout Margin="10">
                         <Label Text="FAÇA SEU LOGIN" Margin="0, 0, 0, 10" HorizontalTextAlignment="Start" TextColor="#000000" FontSize="Large" LineHeight="1.0" FontFamily = "{StaticResource LightItalic}" />
-                        <Entry Placeholder="Senha Alfanumérica" Keyboard="Numeric"  x:Name="txtSenha" FontSize="Medium" BackgroundColor="#FFFFFF" IsPassword="True" FontFamily = "{StaticResource LightItalic}"/>
+                        <Entry Placeholder="Senha Alfanumérica" Keyboard="Numeric" Text="1"  x:Name="txtSenha" FontSize="Medium" BackgroundColor="#FFFFFF" IsPassword="True" FontFamily = "{StaticResource LightItalic}"/>
                     </StackLayout>
 
                     <StackLayout Margin="10, 20, 10, 20" VerticalOptions="CenterAndExpand">

@@ -4,7 +4,7 @@
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="MyMoney.Telas.TelaDetalheConta"
              BackgroundColor="#EFEEF5">
-    
+
     <!--Barra do Navegation-->
     <NavigationPage.TitleView>
         <Grid>
@@ -36,7 +36,7 @@
     <ContentPage.Content>
 
         <StackLayout Margin="10, 40, 10, 0">
-            
+
             <!--Titulo com algumas informações e opções de filtragem-->
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -49,10 +49,26 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="0" Grid.Row="0" Text="{Binding NomeConta}" TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="30" HorizontalTextAlignment="Start" LineHeight="1.0" HorizontalOptions="Start" VerticalOptions="End" />
-                <Label Grid.Column="1" Grid.Row="0" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="30" HorizontalTextAlignment="End" LineHeight="1.0" HorizontalOptions="End" VerticalOptions="Center">
+
+                <StackLayout Margin="0, 0, 0, 0" Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalOptions="StartAndExpand" >
+                    <Label Text="{Binding NomeConta}" TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="30" HorizontalTextAlignment="Start" LineHeight="1.0" VerticalOptions="End" />
+
+                    <Button Padding="10" Image="Editar.png" BorderRadius="10" BackgroundColor="#EFEEF5" HeightRequest="40" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="Start" Clicked="EditarConta">
+                        <Button.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}"/>
+                        </Button.GestureRecognizers>
+                    </Button>
+                    <Button  Padding="10" Image="Apagar.png" BorderRadius="10" BackgroundColor="#EFEEF5" HeightRequest="40" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="Start" Clicked="ApagarConta">
+                        <Button.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}"/>
+                        </Button.GestureRecognizers>
+                    </Button>
+                </StackLayout>
+
+                <Label Grid.Row="0" Grid.Column="1" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="30" HorizontalTextAlignment="End" LineHeight="1.0" HorizontalOptions="End" VerticalOptions="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="R$" />
@@ -61,13 +77,26 @@
                     </Label.FormattedText>
                 </Label>
 
-                <Label Margin="0, 15, 0, 0" Grid.Column="0" Grid.Row="1" Text="Movimentação " TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start" LineHeight="1.0" HorizontalOptions="Start" VerticalOptions="Center" />
-                <StackLayout Margin="0, 15, 0, 0" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" HorizontalOptions="End">
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Micro" HorizontalTextAlignment="Start" LineHeight="1.0" HorizontalOptions="Start" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Objetivo: " FontFamily = "{StaticResource LightItalic}" TextColor="#000000"/>
+                            <Span Text="{Binding Objetivo}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Margin="0, 15, 0, 0" Grid.Column="0" Grid.Row="2" Text="Movimentação " TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start" LineHeight="1.0" HorizontalOptions="Start" VerticalOptions="Center" />
+                <StackLayout Margin="0, 15, 0, 0" Orientation="Horizontal" Grid.Column="1" Grid.Row="2" HorizontalOptions="End">
                     <Button Padding="10" Image="Remover.png" BorderRadius="10" BorderWidth="1" BorderColor="#9A9A9A" BackgroundColor="#EFEEF5" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="End" Clicked="Sacar"/>
-                    <Button  Padding="10" Image="Adicionar.png" BorderRadius="10" BorderWidth="1" BorderColor="#9A9A9A" BackgroundColor="#EFEEF5" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="End" Clicked="Depositar"/>
+                    <Button  Padding="10" Image="Adicionar.png" BorderRadius="10" BorderWidth="1" BorderColor="#9A9A9A" BackgroundColor="#EFEEF5" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="End" Clicked="Depositar">
+                        <Button.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}"/>
+                        </Button.GestureRecognizers>
+                    </Button>
                 </StackLayout>
 
-                <StackLayout Margin="0, 5, 0, 0" Orientation="Horizontal" Grid.Column="0" Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="#E0E1E2">
+                <StackLayout Margin="0, 5, 0, 0" Orientation="Horizontal" Grid.Column="0" Grid.Row="3" HorizontalOptions="FillAndExpand" BackgroundColor="#E0E1E2">
                     <Picker x:Name="pcFiltro" HorizontalOptions="StartAndExpand" Title="FILTRO    " FontFamily = "{StaticResource LightItalic}">
                         <Picker.Items>
                             <x:String>Depósito</x:String>
@@ -75,36 +104,58 @@
                         </Picker.Items>
                     </Picker>
                 </StackLayout>
-                <StackLayout Margin="0, 5, 0, 0" Orientation="Horizontal" Grid.Column="1" Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="#E0E1E2">
+                <StackLayout Margin="0, 5, 0, 0" Orientation="Horizontal" Grid.Column="1" Grid.Row="3" HorizontalOptions="FillAndExpand" BackgroundColor="#E0E1E2">
                     <DatePicker x:Name="pcData" HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily = "{StaticResource LightItalic}"/>
                 </StackLayout>
             </Grid>
 
             <!--Depositos de Saques da Conta-->
             <ScrollView>
-                <StackLayout Margin="0, 20, 0, 0">
-                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <!-- Definindo as Colunas -->
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <!-- Definindo as linhas -->
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
+                <ListView x:Name="ListaConta" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
 
-                            <Label Grid.Column="0" Grid.Row="0" Text="+" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Grid.Row="0" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Center" />
-                            <Label Grid.Column="2" Grid.Row="0" Text="R$300,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-                            <Button Margin="0, 0, 10, 0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End" Clicked="VerDetalhe"/>
-                        </Grid>
-                    </pancake:PancakeView>
+                                <StackLayout Margin="0, 5, 0, 0">
+                                    <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <!-- Definindo as Colunas -->
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <!-- Definindo as linhas -->
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
 
-                </StackLayout>
+                                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding SimboloTransacao}" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                                            <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{Binding DataTransacao}" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Large" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalOptions="Start" />
+
+                                            <Label Grid.Column="2" Grid.Row="0" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="R$" />
+                                                        <Span Text="{Binding ValorTransacao}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="VerDetalhe" CommandParameter="{Binding .}"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </Grid>
+                                    </pancake:PancakeView>
+                                </StackLayout>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </ScrollView>
 
         </StackLayout>

@@ -21,27 +21,33 @@ namespace MyMoney.Telas
 		{
 			InitializeComponent ();
 
+            this.Appearing += AtualizarLista; //Faz atualizar os dados da lista
+        }
+
+
+        //Função para atualizar a lista de transações
+        private void AtualizarLista(object sender, System.EventArgs e)
+        {
+            //TODO criar o metodo para atualizar
             DataBase cont = new DataBase();
             var Contas = cont.ListarContas();
-
-
             ListaConta.ItemsSource = Contas;
-		}
+        }
 
         private void DetalheConta(object sender, EventArgs args)
         {
-            //TODO: Passar o id da conta para puxar os dados na tela de detalhe
             Label lblDetalhe = (Label)sender;
             TapGestureRecognizer tapGest = ((TapGestureRecognizer)lblDetalhe.GestureRecognizers[0]);
             Conta conta = tapGest.CommandParameter as Conta;
 
             Navigation.PushAsync(new TelaDetalheConta(conta));
+
+
             //App.Current.MainPage = new NavigationPage(new TelaDetalheConta());
         }
 
         private async void ApagarConta(object sender, EventArgs e)
         {
-            //TODO: Passar o id da conta para puxar os dados na tela de detalhe
             Button btnDetalhe = (Button)sender;
             TapGestureRecognizer tapGest = ((TapGestureRecognizer)btnDetalhe.GestureRecognizers[0]);
             Conta conta = tapGest.CommandParameter as Conta;

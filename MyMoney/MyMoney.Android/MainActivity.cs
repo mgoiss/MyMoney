@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Content.Res;
+using Rg.Plugins.Popup.Services;
 
 namespace MyMoney.Droid
 {
@@ -23,6 +25,19 @@ namespace MyMoney.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
             Rg.Plugins.Popup.Popup.Init(this, bundle);
+        }
+
+        public override void OnBackPressed()
+        {
+            if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
+            {
+                // fazer algo se existem algumas páginas no `PopupStack`
+                PopupNavigation.PopAsync();
+            }
+            else
+            {
+                // Faça alguma coisa se não houver nenhuma página no `PopupStack` 
+            }
         }
     }
 }

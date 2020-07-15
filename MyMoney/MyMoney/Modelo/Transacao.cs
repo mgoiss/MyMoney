@@ -15,6 +15,9 @@ namespace MyMoney.Modelo
         public DateTime DataTransacao { get; set; }
         public string TipoTransacao { get; set; }
 
+        [Ignore]
+        public char SimboloTransacao { get; set; }
+
         [Indexed]
         public int ContaId { get; set; }
 
@@ -30,6 +33,15 @@ namespace MyMoney.Modelo
             DataTransacao = Trans.DataTransacao;
             TipoTransacao = Trans.TipoTransacao;
             ContaId = Trans.ContaId;
+        }
+
+        public Transacao(double valorTransacao, string descTransacao, DateTime dataTransacao, string tipoTransacao, int contaId)
+        {
+            ValorTransacao = valorTransacao;
+            DescTransacao = descTransacao;
+            DataTransacao = dataTransacao;
+            TipoTransacao = tipoTransacao;
+            ContaId = contaId;
         }
     }
 }

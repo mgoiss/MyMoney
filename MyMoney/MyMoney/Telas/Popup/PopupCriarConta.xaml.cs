@@ -29,7 +29,7 @@ namespace MyMoney.Telas.Popup
 
                 //Analisando se o valor inicial da conta foi informado
                 double valor = 0.0;
-                if (txtValor.Text != null)
+                if (txtValor.Text != null && txtValor.Text != "")
                 {
                     valor = double.Parse(txtValor.Text);
                 }
@@ -43,30 +43,30 @@ namespace MyMoney.Telas.Popup
                 //Metodos para voltar a pagina e recarregar o valor total
                 App.Current.MainPage = new NavigationPage(new Abas()) { BarBackgroundColor = Color.FromHex("#E02041") }; //Chamando novamente a aba para que seja recarregado o valor total
 
-                PopupNavigation.PopAsync(); //Por algum motivo precisou dessa parte para voltar a tela inicial
+                PopupNavigation.Instance.PopAsync(); //Por algum motivo precisou dessa parte para voltar a tela inicial
             }
         }
 
         private async void Voltar(object sender, EventArgs e)
         {
-            await PopupNavigation.PopAsync();
+            await PopupNavigation.Instance.PopAsync();
         }
 
         private bool verificardados()
         {
-            int valor = 0;
+            double valor = 0;
 
             if (txtNomeConta.Text == null || txtObjetivoConta.Text == null)
             {
-                DisplayAlert("Erro", "Preencha todos os dados obrigatorios", "OK");
+                DisplayAlert("Atenção", "Preencha todos os dados obrigatorios", "OK");
 
                 return false;
             }
-            else if (txtValor.Text != null)
+            else if (txtValor.Text != null && txtValor.Text != "")
             {
-                if (!(Int32.TryParse(txtValor.Text.ToString(), out valor)))
+                if (!(double.TryParse(txtValor.Text.ToString(), out valor)))
                 {
-                    DisplayAlert("Erro", "O campo valor deve ser preenchido apenas com numero!", "OK");
+                    DisplayAlert("Atenção", "O campo valor deve ser preenchido apenas com numero!", "OK");
 
                     return false;
                 }

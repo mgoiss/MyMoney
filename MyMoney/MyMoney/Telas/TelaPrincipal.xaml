@@ -51,6 +51,12 @@
 
                                             <Label Grid.Column="0" Grid.Row="0" x:Name="NomeConta" Text="{Binding NomeConta}" TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
 
+                                            <!--<Button Clicked="ApagarConta" Grid.Column="0" Grid.Row="0" Padding="10" Image="Apagar.png" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End">
+                                                <Button.GestureRecognizers>
+                                                    <TapGestureRecognizer CommandParameter="{Binding .}"/>
+                                                </Button.GestureRecognizers>
+                                            </Button>-->
+                                            
                                             <Label Grid.Column="1" Grid.Row="0" TextColor="#E02041" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -84,12 +90,6 @@
                                             </Label>
 
                                             <Label Grid.Column="1" Grid.Row="4" Text="{Binding DataSaque}" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                                            <Button Clicked="ApagarConta" Grid.Column="0" Grid.RowSpan="2" Grid.Row="4" Padding="10" Image="Apagar.png" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start">
-                                                <Button.GestureRecognizers>
-                                                    <TapGestureRecognizer CommandParameter="{Binding .}"/>
-                                                </Button.GestureRecognizers>
-                                            </Button>
 
                                             <Label Grid.Column="1" Grid.Row="5" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End">
                                             <Label.GestureRecognizers>

@@ -20,7 +20,6 @@ namespace MyMoney.Telas
 
         private void Acessar(object sender, EventArgs args)
         {
-            //TODO: Verificar a senha
             DataBase data = new DataBase();
 
             int senha = 0;

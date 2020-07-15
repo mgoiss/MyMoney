@@ -12,7 +12,7 @@
                  BackgroundColor="#EFEEF5">
         <Label Text="CONTA" Margin="0, 0, 0, 10" HorizontalTextAlignment="Center" TextColor="#000000" FontSize="Large" LineHeight="1.0" FontFamily = "{StaticResource BlackItalic}" />
 
-        <Entry Placeholder="Nome Da Conta" Keyboard="Text"  x:Name="txtNomeConta" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
+        <Entry MaxLength="12" Placeholder="Nome Da Conta" Keyboard="Text"  x:Name="txtNomeConta" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
         <Entry Placeholder="Valor Inicial (Opicional)" Keyboard="Numeric"  x:Name="txtValor" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
         <Editor Placeholder="Objetivo da Conta" Keyboard="Text" AutoSize="TextChanges" x:Name="txtObjetivoConta" HeightRequest="150" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
 

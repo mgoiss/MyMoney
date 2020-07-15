@@ -20,8 +20,7 @@ namespace MyMoney.Telas
         }
 
         private void VamosLa(object sender, EventArgs args)
-        {
-            //TODO: Verificar se os dados obrigatorios foram preenchidos e se foi adicionado ao banco
+        {            
             if(verificardados())
             {
                 DataBase data = new DataBase();
@@ -45,7 +44,7 @@ namespace MyMoney.Telas
         private bool verificardados()
         {
             int senha = 0;
-            int valor = 0;
+            double valor = 0;
 
             if (txtNome.Text == null || txtSenha.Text == null || txtNomeConta.Text == null || txtObjetivoConta.Text == null)
             {
@@ -61,7 +60,7 @@ namespace MyMoney.Telas
             }
             else if (txtValor.Text != null)
             {
-                if(!(Int32.TryParse(txtValor.Text.ToString(), out valor)))
+                if(!(Double.TryParse(txtValor.Text.ToString(), out valor)))
                 {
                     DisplayAlert("Erro", "O campo valor deve ser preenchido apenas com numero!", "OK");
 

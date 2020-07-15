@@ -20,7 +20,7 @@
                             <Entry Placeholder="Senha Alfanumérica" Keyboard="Numeric"  x:Name="txtSenha" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
                         </StackLayout>
                         <StackLayout Margin="10">
-                            <Entry Placeholder="Nome Da Conta" Keyboard="Text"  x:Name="txtNomeConta" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
+                            <Entry MaxLength="12" Placeholder="Nome Da Conta" Keyboard="Text"  x:Name="txtNomeConta" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
                             <Entry Placeholder="Valor Inicial (Opicional)" Keyboard="Numeric"  x:Name="txtValor" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
                             <Editor Placeholder="Objetivo da Conta" Keyboard="Text" AutoSize="TextChanges" x:Name="txtObjetivoConta" HeightRequest="150" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
                         </StackLayout>

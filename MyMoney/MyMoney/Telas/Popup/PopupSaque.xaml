@@ -3,7 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="MyMoney.Telas.Popup.PopupSaque"
-             BackgroundInputTransparent="False">
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             BackgroundInputTransparent="False" BackgroundColor="#c12028">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+      PositionIn="Bottom"
+      PositionOut="Center"
+      ScaleIn="1"
+      ScaleOut="0.7"
+      DurationIn="700"
+      EasingIn="BounceOut"/>
+    </pages:PopupPage.Animation>
 
     <StackLayout Margin="18"
                  Padding="36"
@@ -12,12 +23,12 @@
                  BackgroundColor="#EFEEF5">
         <Label Text="SAQUE" Margin="0, 0, 0, 10" HorizontalTextAlignment="Center" TextColor="#000000" FontSize="Large" LineHeight="1.0" FontFamily = "{StaticResource BlackItalic}" />
 
-        <Entry Placeholder="Valor" Keyboard="Numeric"  x:Name="txtValorSaque" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
-        <Editor Placeholder="Descrição do Saque" Keyboard="Text" AutoSize="TextChanges" x:Name="txtDescricaoSaque" HeightRequest="150" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
+        <Entry Placeholder="Valor" Keyboard="Numeric"  x:Name="txtValor" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
+        <Editor Placeholder="Descrição do Saque" Keyboard="Text" AutoSize="TextChanges" x:Name="txtDescricao" HeightRequest="150" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
 
         <StackLayout Orientation="Horizontal" Margin="10" HorizontalOptions="EndAndExpand">
-            <Button BackgroundColor="#c12028" TextColor="White" BorderRadius="10" Text="SACAR"  FontSize="Large" VerticalOptions="StartAndExpand" FontFamily = "{StaticResource BlackItalic}" />
-            <Button BackgroundColor="#848387" TextColor="White" BorderRadius="10" Text="CANCELAR" FontSize="Large" VerticalOptions="EndAndExpand" FontFamily = "{StaticResource BlackItalic}" />
+            <Button Clicked="Depositar" BackgroundColor="#c12028" TextColor="White" BorderRadius="10" Text="SACAR"  FontSize="Large" VerticalOptions="StartAndExpand" FontFamily = "{StaticResource BlackItalic}" />
+            <Button Clicked="Cancelar" BackgroundColor="#848387" TextColor="White" BorderRadius="10" Text="CANCELAR" FontSize="Large" VerticalOptions="EndAndExpand" FontFamily = "{StaticResource BlackItalic}" />
         </StackLayout>
     </StackLayout>
 
