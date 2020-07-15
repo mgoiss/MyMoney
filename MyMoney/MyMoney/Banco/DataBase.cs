@@ -11,6 +11,8 @@ namespace MyMoney.Banco
     {
         private SQLiteConnection _conexao;
 
+        //TODO fazer uma função para backup do banco 
+        //TODO fazer uma função para zerar o banco
         public DataBase()
         {
             var dep = DependencyService.Get<ICaminho>();
@@ -181,17 +183,15 @@ namespace MyMoney.Banco
             }            
         }
         //Inserindo Transação
-        public void InserirTransacao(Transacao trans, int idConta)
+        public void InserirTransacao(Transacao trans, double valorTotal)
         {
-            trans.ContaId = idConta;
+            trans.ContaId = trans.ContaId;
             _conexao.Insert(trans);
 
+            //Atualizando o valor total da conta
+            _conexao.Query<Conta>("UPDATE Conta SET ValorConta =  ? WHERE Id = ? ", valorTotal, trans.ContaId);
+
             //TODO Criar metodo para alterar o valor total da conta e adicionar metodo a função de saque, depoisto e exclusão de transação            
-        }
-
-        public void AlterarValorTotal(int idConta, double valor)
-        {
-
         }
 
 

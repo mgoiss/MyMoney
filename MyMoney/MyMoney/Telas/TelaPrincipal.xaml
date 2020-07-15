@@ -6,6 +6,7 @@
              BackgroundColor="#EFEEF5">
 
     <ContentPage.Content>
+
         <StackLayout Margin="10, 40, 10, 0">
             <Grid>
                 <Grid.ColumnDefinitions>

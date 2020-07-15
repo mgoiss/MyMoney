@@ -47,26 +47,26 @@ namespace MyMoney.Telas.Popup
         private bool ValidarDados()
         {
             //verificação se foi informado dados
-            if (txtValor.Text == "" || txtDescricao.Text == "")
+            if ((txtValor.Text == "" || txtValor.Text == null) || (txtDescricao.Text == "" || txtDescricao.Text == null))
             {
-                if (txtValor.Text == "" && txtDescricao.Text == "") //Todos os campos
+                if ((txtValor.Text == "" || txtValor.Text == null) && (txtDescricao.Text == "" || txtDescricao.Text == null)) //Todos os campos
                 {
                     DisplayAlert("Atenção", "Prencheda todos os Dados!", "OK");
 
                     return false;
                 }
-                else if(txtValor.Text == "") //campo valor
+                else if ((txtValor.Text == "" || txtValor.Text == null) ) //campo valor
                 {
                     DisplayAlert("Atenção", "Prencheda o valor!", "OK");
 
                     return false;
                 }
-                else //campo descrição
+                else //if(txtDescricao.Text == "" || txtDescricao.Text == null) //campo descrição
                 {
                     DisplayAlert("Atenção", "Prencheda a descrição!", "OK");
 
                     return false;
-                }
+                }              
             }
             else
             {
@@ -95,10 +95,14 @@ namespace MyMoney.Telas.Popup
                 Transacao deposito = new Transacao(double.Parse(txtValor.Text), txtDescricao.Text, DateTime.Now, "deposito", idConta);
 
                 //Inserindo a transação no banco
-                data.InserirTransacao(deposito, deposito.ContaId);
+                data.InserirTransacao(deposito, Conta.ValorConta + deposito.ValorTransacao);
+
+                //inserindo o novo valor no objeto conta para ser exibido para o usuário
+                Conta.ValorConta += deposito.ValorTransacao;
 
                 //armengue para fazer o app atualizar os dados
                 Application.Current.MainPage.Navigation.PopAsync(); // Remova a página atualmente no topo.
+                Application.Current.MainPage.Navigation.PopAsync(); // Remova a página atualmente no topo.                
                 await Navigation.PushAsync(new TelaDetalheConta(Conta)); //Chamando novamente a tela detalhe
                 PopupNavigation.Instance.PopAsync(); ; //Por algum motivo precisou dessa parte para voltar a tela inicial
             }            

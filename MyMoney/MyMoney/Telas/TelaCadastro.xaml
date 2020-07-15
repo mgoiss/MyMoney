@@ -17,7 +17,7 @@
 
                         <StackLayout Margin="10">
                             <Entry Placeholder="Primeiro Nome" Keyboard="Text" x:Name="txtNome" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
-                            <Entry Placeholder="Senha Alfanumérica" Keyboard="Numeric"  x:Name="txtSenha" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
+                            <Entry Placeholder="Senha Alfanumérica" Keyboard="Numeric" IsPassword="True"  x:Name="txtSenha" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
                         </StackLayout>
                         <StackLayout Margin="10">
                             <Entry MaxLength="12" Placeholder="Nome Da Conta" Keyboard="Text"  x:Name="txtNomeConta" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
