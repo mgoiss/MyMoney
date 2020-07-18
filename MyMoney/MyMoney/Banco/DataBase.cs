@@ -123,11 +123,31 @@ namespace MyMoney.Banco
         {
             cont.UsuarioId = idUsuario;
             _conexao.Insert(cont);
+
+            if (cont.ValorConta > 0) //Verificando se foi informado um valor inical
+            {
+                //Pegando o id da ultima conta adicionada
+                List<Conta> Conta = ListarContas();            
+                cont.Id = Conta[Conta.Count - 1].Id;
+
+                //Instanciando o objeto do tipo transação
+                Transacao trans = new Transacao(cont.ValorConta, "Valor Inicial da conta", DateTime.Now, "deposito", cont.Id);
+
+                //Inserindo a trnasação
+                _conexao.Insert(trans);
+            }
         }
         //APAGAR CONTA
         public void ApagarConta(Conta conta)
         {
             _conexao.Delete(conta);
+        }
+        
+        //Atualizar CONTA
+        public void AtualizarConta(Conta conta)
+        {
+            //Atualizando o valor total da conta
+            _conexao.Query<Conta>("UPDATE Conta SET ValorConta =  ?, NomeConta = ?, Objetivo = ? WHERE Id = ? ", conta.ValorConta, conta.NomeConta, conta.Objetivo, conta.Id);
         }
 
         /************************************
@@ -163,9 +183,9 @@ namespace MyMoney.Banco
 
             if (ListTransacao.Count > 0) //Analisando de existe transaçao na conta
             {
-                int cont = 0; 
+                int cont = 0;
                 foreach (var item in ListTransacao) //Pecorrendo a lista para pegar a ultima transação desejada
-                {                    
+                {
                     if (item.TipoTransacao == nomeCampo)
                     {
                         trans = new Transacao(ListTransacao[cont]); //Instaciando a transação com o ultimo deposito
@@ -180,21 +200,26 @@ namespace MyMoney.Banco
             else
             {
                 return trans = new Transacao(); //Retornando nulo pq a lista tá vazia
-            }            
+            }
         }
         //Inserindo Transação
         public void InserirTransacao(Transacao trans, double valorTotal)
         {
-            trans.ContaId = trans.ContaId;
+            //trans.ContaId = trans.ContaId;
             _conexao.Insert(trans);
 
             //Atualizando o valor total da conta
-            _conexao.Query<Conta>("UPDATE Conta SET ValorConta =  ? WHERE Id = ? ", valorTotal, trans.ContaId);
-
-            //TODO Criar metodo para alterar o valor total da conta e adicionar metodo a função de saque, depoisto e exclusão de transação            
+            _conexao.Query<Conta>("UPDATE Conta SET ValorConta =  ? WHERE Id = ? ", valorTotal, trans.ContaId);          
         }
 
+        //APAGAR CONTA
+        public void ApagarTransacao(Transacao transacao, double valorTotal)
+        {
+            _conexao.Delete(transacao);
 
+            //Atualizando o valor total da conta
+            _conexao.Query<Conta>("UPDATE Conta SET ValorConta =  ? WHERE Id = ? ", valorTotal, transacao.ContaId);
+        }
 
 
 

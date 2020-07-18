@@ -9,6 +9,7 @@ using MyMoney.Modelo;
 using MyMoney.Banco;
 using System.Collections.ObjectModel;
 using Rg.Plugins.Popup.Pages;
+using System.Collections.Generic;
 
 namespace MyMoney.Telas
 {
@@ -65,7 +66,11 @@ namespace MyMoney.Telas
         //Finalizar a função Detalhe
         private async void VerDetalhe(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new PopupDetalhe());
+            Label lblDetalhe = (Label)sender;
+            TapGestureRecognizer tapGest = ((TapGestureRecognizer)lblDetalhe.GestureRecognizers[0]);
+            Transacao trans = tapGest.CommandParameter as Transacao;
+
+            await PopupNavigation.Instance.PushAsync(new PopupDetalhe(trans, ContaAtual));
         }
 
         private async void ApagarConta(object sender, EventArgs e)
@@ -92,8 +97,18 @@ namespace MyMoney.Telas
             Button btnDetalhe = (Button)sender;
             TapGestureRecognizer tapGest = ((TapGestureRecognizer)btnDetalhe.GestureRecognizers[0]);
             Conta conta = tapGest.CommandParameter as Conta;
-            //TODO: Finalizar a Programação dessa Função, Passando os dados da conta para a tela, Alterando o valor do butão Criar para Alterar e Bloqueando a edição do valor Inicial
-            await PopupNavigation.Instance.PushAsync(new PopupCriarConta());
+
+            DataBase data = new DataBase();
+            List<Transacao> ValorInicial = data.ListarTransacaoConta(conta.Id);
+            double valor = 0.0;
+
+            //Verificando se foi informado um valor inicial, para passa-lo para a tela de edição
+            if (ValorInicial[ValorInicial.Count - 1].DescTransacao == "Valor Inicial da conta")
+            {
+                valor = ValorInicial[ValorInicial.Count - 1].ValorTransacao;
+            }
+
+            await PopupNavigation.Instance.PushAsync(new PopupCriarConta(conta, valor));
         }
     }
 }

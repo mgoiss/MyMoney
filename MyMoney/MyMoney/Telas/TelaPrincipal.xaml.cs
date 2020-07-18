@@ -28,7 +28,6 @@ namespace MyMoney.Telas
         //Função para atualizar a lista de transações
         private void AtualizarLista(object sender, System.EventArgs e)
         {
-            //TODO criar o metodo para atualizar
             DataBase cont = new DataBase();
             var Contas = cont.ListarContas();
             ListaConta.ItemsSource = Contas;

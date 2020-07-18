@@ -4,50 +4,70 @@
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="MyMoney.Telas.Popup.PopupDetalhe"
-             BackgroundInputTransparent="False">
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             BackgroundInputTransparent="False" BackgroundColor="#c12028">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+      PositionIn="Bottom"
+      PositionOut="Center"
+      ScaleIn="1"
+      ScaleOut="0.7"
+      DurationIn="700"
+      EasingIn="BounceOut"/>
+    </pages:PopupPage.Animation>
 
     <StackLayout Margin="18"
-                 Padding="10"
+                 Padding="36"
                  HorizontalOptions="Center"
                  VerticalOptions="Center"
                  BackgroundColor="#EFEEF5">
+
         <Label Text="DETALHES" Margin="0, 0, 0, 10" HorizontalTextAlignment="Center" TextColor="#000000" FontSize="Large" LineHeight="1.0" FontFamily = "{StaticResource BlackItalic}" />
-
-        <StackLayout Orientation="Horizontal">
-            <pancake:PancakeView BackgroundColor="#FFFFFF" CornerRadius="20" Padding="10">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <!-- Definindo as Colunas -->
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <!-- Definindo as linhas -->
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-
-                    </Grid.RowDefinitions>
-
-                    <Label Grid.Column="0" Grid.Row="0" Text="VALOR" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                    <Label Grid.Column="1" Grid.Row="0" Text="R$500,00 " TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                    <Label Grid.Column="0" Grid.Row="1" Text="Data:" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                    <Label Grid.Column="1" Grid.Row="1" Text="01/01/2020" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                    <Label Grid.Column="0" Grid.Row="2" Text="Descrição: " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Center"  HorizontalOptions="Start" VerticalOptions="Center" />
-
-                    <!--Arrumar um jeito de um texto caber aki dentro sem que ele bug a exibição (estava dando um erro quando colocava um texto grande)-->
-                    <Label Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="3" Text="Descrição de teste" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
-
-                </Grid>
-            </pancake:PancakeView>
-        </StackLayout>
         
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!-- Definindo as Colunas -->
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <!-- Definindo as linhas -->
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Text="VALOR" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+
+            <Label Grid.Column="1" Grid.Row="0" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="R$" />
+                        <Span x:Name="txtValor"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label  />
+
+            <Label Grid.Column="0" Grid.Row="1" Text="Data:" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+            <Label Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" x:Name="txtData" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+
+            <Label Grid.Column="0" Grid.Row="3" Text="Descrição: " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Center"  HorizontalOptions="Start" VerticalOptions="Center" />
+
+            <!--Arrumar um jeito de um texto caber aki dentro sem que ele bug a exibição (estava dando um erro quando colocava um texto grande)-->
+            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" x:Name="txtDescricao" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+
+
+        </Grid>
+
+
         <StackLayout Orientation="Horizontal" Margin="10" HorizontalOptions="CenterAndExpand">
-            <Button BackgroundColor="#c12028" TextColor="White" BorderRadius="10" Text="APAGAR"  FontSize="Large" VerticalOptions="StartAndExpand" FontFamily = "{StaticResource BlackItalic}" />
-            <Button BackgroundColor="#848387" TextColor="White" BorderRadius="10" Text="VOLTAR" FontSize="Large" VerticalOptions="EndAndExpand" FontFamily = "{StaticResource BlackItalic}" />
+            <Button BackgroundColor="#c12028" TextColor="White" BorderRadius="10" x:Name="btnApagar" Text="APAGAR"  Clicked="Apagar" FontSize="Large" VerticalOptions="StartAndExpand" FontFamily = "{StaticResource BlackItalic}" />
+            <Button BackgroundColor="#848387" TextColor="White" BorderRadius="10" Text="VOLTAR" Clicked="Cancelar" FontSize="Large" VerticalOptions="EndAndExpand" FontFamily = "{StaticResource BlackItalic}" />
         </StackLayout>
     </StackLayout>
 
