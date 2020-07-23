@@ -11,7 +11,6 @@ namespace MyMoney.Banco
     {
         private SQLiteConnection _conexao;
 
-        //TODO fazer uma função para zerar o banco
         public DataBase()
         {
             var dep = DependencyService.Get<ICaminho>();
