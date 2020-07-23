@@ -11,24 +11,24 @@ using Xamarin.Forms.Xaml;
 
 namespace MyMoney.Telas
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TelaCadastro : ContentPage
-	{
-		public TelaCadastro ()
-		{
-			InitializeComponent ();
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class TelaCadastro : ContentPage
+    {
+        public TelaCadastro()
+        {
+            InitializeComponent();
         }
 
         private void VamosLa(object sender, EventArgs args)
-        {            
-            if(verificardados())
+        {
+            if (verificardados())
             {
                 DataBase data = new DataBase();
 
-                Usuario use = new Usuario(txtNome.Text, int.Parse(txtSenha.Text));
+                Usuario use = new Usuario(txtUsuario.Text, int.Parse(txtSenha.Text));
 
                 double valor = 0.0;
-                if(txtValor.Text != null || txtValor.Text != "") //Passando o valor para a variavel
+                if (txtValor.Text != null || txtValor.Text != "") //Passando o valor para a variavel
                 {
                     valor = double.Parse(txtValor.Text);
                 }
@@ -38,7 +38,7 @@ namespace MyMoney.Telas
                 data.InserirUsuario(use, cont); //Criando o usuário
 
                 App.Current.MainPage = new TelaLogin(); //Chamando a tela Login
-            }            
+            }
         }
 
         private bool verificardados()
@@ -47,9 +47,8 @@ namespace MyMoney.Telas
             double valor = 0;
 
             //Prencha todos os campos
-            if (txtNome.Text == null || txtNome.Text == "" || txtSenha.Text == null || txtSenha.Text == "" || txtNomeConta.Text == null || txtNomeConta.Text == "" || txtObjetivoConta.Text == null || txtObjetivoConta.Text == "")
+            if (txtUsuario.Text == null || txtUsuario.Text == "" || txtSenha.Text == null || txtSenha.Text == "" || txtNomeConta.Text == null || txtNomeConta.Text == "" || txtObjetivoConta.Text == null || txtObjetivoConta.Text == "")
             {
-                //TODO: Fazer uma verificação por campo, para exibir ao usuário o campo que dever ser preenchido
                 DisplayAlert("Erro", "Preencha todos os dados obrigatorios", "OK");
 
                 return false;
@@ -60,9 +59,9 @@ namespace MyMoney.Telas
 
                 return false;
             }
-            else if (txtValor.Text != null)
+            else if ((txtValor.Text != null) & txtValor.Text != "") //Verificando se foi infoemado algum valor
             {
-                if(!(Double.TryParse(txtValor.Text.ToString(), out valor))) //Analisando se foi informado um valor numerico
+                if (!(Double.TryParse(txtValor.Text.ToString(), out valor))) //Analisando se foi informado um valor numerico
                 {
                     DisplayAlert("Erro", "O campo valor deve ser preenchido apenas com numero!", "OK");
 
@@ -77,5 +76,5 @@ namespace MyMoney.Telas
             }
 
         }
-	}
+    }
 }

@@ -3,6 +3,7 @@ using MyMoney.Modelo;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,8 +28,8 @@ namespace MyMoney.Telas.Popup
             ContaAtual = conta;
             TransacaoAtual = transacao;
 
-            txtValor.Text = transacao.ValorTransacao.ToString();
-            txtData.Text = transacao.DataTransacao.ToString();
+            txtValor.Text = transacao.ValorTransacao.ToString("C2", CultureInfo.CurrentCulture);
+            txtData.Text = transacao.DataTransacao.ToString("ddd, dd MMM yyyy,   HH ':' mm ':' ss ");
             txtDescricao.Text = transacao.DescTransacao;            
         }
 

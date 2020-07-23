@@ -61,9 +61,9 @@
                                             <Label Grid.Column="1" Grid.Row="0" TextColor="#E02041" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="R$" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource BlackItalic}"  FontSize="Large"/>
+                                                        <!--<Span Text="R$" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource BlackItalic}"  FontSize="Large"/>-->
 
-                                                        <Span Text="{Binding ValorConta}" TextColor="{Binding TituloCor}" FontFamily = "{StaticResource BlackItalic}" FontSize="Large"/>
+                                                        <Span Text="{Binding ValorConta, StringFormat='{0:c}'}" TextColor="{Binding TituloCor}" FontFamily = "{StaticResource BlackItalic}" FontSize="Large"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -72,25 +72,25 @@
                                             <Label Grid.Column="1" Grid.Row="1" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="R$" />
-                                                        <Span Text="{Binding UltimoDeposito}"/>
+                                                        <!--<Span Text="R$" />-->
+                                                        <Span Text="{Binding UltimoDeposito, StringFormat='{0:c}'}"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
 
-                                            <Label Grid.Column="1" Grid.Row="2" Text="{Binding DataDeposito}" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                                            <Label Grid.Column="1" Grid.Row="2" Text="{Binding DataDeposito , StringFormat='{0:dd/MM/yyyy}'}" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
 
                                             <Label Grid.Column="0" Grid.Row="3" Text="Ultimo Saque: " TextColor="#000000"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
                                             <Label Grid.Column="1" Grid.Row="3" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="R$" />
-                                                        <Span Text="{Binding UltimoSaque}"/>
+                                                        <!--<Span Text="R$" />-->
+                                                        <Span Text="{Binding UltimoSaque, StringFormat='{0:c}'}"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
 
-                                            <Label Grid.Column="1" Grid.Row="4" Text="{Binding DataSaque}" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                                            <Label Grid.Column="1" Grid.Row="4" Text="{Binding DataSaque, StringFormat='{0:dd/MM/yyyy}'}" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
 
                                             <Label Grid.Column="1" Grid.Row="5" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End">
                                             <Label.GestureRecognizers>

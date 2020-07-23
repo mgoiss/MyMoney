@@ -51,6 +51,36 @@ namespace MyMoney.Telas
             } */
         }
 
+        //Função para atualizar a lista de transações
+        private void FiltrarLista(object sender, System.EventArgs e)
+        {
+            var itemSelecionado = pcFiltro.Items[pcFiltro.SelectedIndex]; //Pegando o item selecionado
+
+            if (pcFiltro.Items[pcFiltro.SelectedIndex] == "Depósito") //DEFININDO O TEM DA FORMA QUE TÁ SALVO NO BANCO
+            {
+                itemSelecionado = "deposito";
+            }
+            else
+            {
+                itemSelecionado = "saque";
+            }            
+
+            DataBase trans = new DataBase();
+
+            var Transacaos = trans.FiltrarTransacaoConta(ContaAtual.Id, itemSelecionado); //FILTRANDO
+
+            if (Transacaos.Count == 0) //Analisando se foi encontrado alguma transação daquele item
+            {
+                DisplayAlert("Atenção", "Não foi encontrado nenhuma: " + pcFiltro.Items[pcFiltro.SelectedIndex], "OK");
+            }
+            else
+            {
+                //Exibindo os dados
+                ListaConta.ItemsSource = Transacaos;
+                ListaConta.EndRefresh();
+            }
+        }
+
         private void Depositar(object sender, EventArgs e)
         {
             var page = new PopupDeposito(ContaAtual); //Instanciando um objeto do tipo POPUPDeposito
@@ -109,6 +139,47 @@ namespace MyMoney.Telas
             }
 
             await PopupNavigation.Instance.PushAsync(new PopupCriarConta(conta, valor));
+        }
+
+        //Metodo para filtar por data
+        private void PcData_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            var dataSelecionado = pcData.Date.Date.ToString("dd/MM/yyyy"); //Pegando o item selecionado            
+
+            if (pcData.Date.Date > DateTime.Now) //Analisando se a data informada não é maior do que a do dia atual
+            {
+                DisplayAlert("Atenção", "A data selecionada é maior que a atual", "OK");
+            }
+            else
+            {
+                DataBase trans = new DataBase();
+
+                //var Transacaos = trans.FiltrarDataTransacaoConta(ContaAtual.Id, dataSelecionado); //FILTRANDO
+
+                var Transacaos = trans.ListarTransacaoConta(ContaAtual.Id); //Pegando todos os itens da lista
+
+                List<Transacao> valoresFiltrado = new List<Transacao>();
+
+                foreach (var item in Transacaos) //Filtrando a lista a partir da data
+                {
+                    if (item.DataTransacao.ToString("dd/MM/yyyy") == dataSelecionado)
+                    {
+                        valoresFiltrado.Add(item);
+                    }
+                }
+
+                if (valoresFiltrado.Count == 0) //Analisando se foi encontrado alguma transação daquele item
+                {
+                    DisplayAlert("Atenção", "Não foi encontrado nenhuma transação na data: " + dataSelecionado, "OK");
+                }
+                else
+                {
+                    //Exibindo os dados
+                    ListaConta.ItemsSource = valoresFiltrado;
+                    ListaConta.EndRefresh();
+                }
+            }
+                        
         }
     }
 }

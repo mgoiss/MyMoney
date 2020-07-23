@@ -23,7 +23,7 @@
                  BackgroundColor="#EFEEF5">
 
         <Label Text="DETALHES" Margin="0, 0, 0, 10" HorizontalTextAlignment="Center" TextColor="#000000" FontSize="Large" LineHeight="1.0" FontFamily = "{StaticResource BlackItalic}" />
-        
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <!-- Definindo as Colunas -->
@@ -35,32 +35,36 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
 
             </Grid.RowDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" Text="VALOR" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+            <StackLayout Orientation="Vertical">
 
-            <Label Grid.Column="1" Grid.Row="0" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="R$" />
-                        <Span x:Name="txtValor"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
 
-            <Label  />
+                <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Spacing="1" Margin="0, 0, 0, 10" Orientation="Vertical">
+                    <Label Margin="0, 0, 0, 0" Text="VALOR" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Large" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
 
-            <Label Grid.Column="0" Grid.Row="1" Text="Data:" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-            <Label Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" x:Name="txtData" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                    <Label  TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <!--<Span Text="R$" />-->
+                                <Span x:Name="txtValor"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
 
-            <Label Grid.Column="0" Grid.Row="3" Text="Descrição: " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Center"  HorizontalOptions="Start" VerticalOptions="Center" />
+                <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Spacing="1" Margin="0, 0, 0, 10" Orientation="Vertical">
+                    <Label Text="Data:" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
+                    <Label x:Name="txtData" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                </StackLayout>
 
-            <!--Arrumar um jeito de um texto caber aki dentro sem que ele bug a exibição (estava dando um erro quando colocava um texto grande)-->
-            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" x:Name="txtDescricao" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
-
+                <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Spacing="1" Margin="0, 0, 0, 10" Orientation="Vertical">
+                    <Label Text="Descrição: " TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Center"  HorizontalOptions="Start" VerticalOptions="Center" />
+                    <!--Arrumar um jeito de um texto caber aki dentro sem que ele bug a exibição (estava dando um erro quando colocava um texto grande)-->
+                    <Label x:Name="txtDescricao" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                </StackLayout>
+            </StackLayout>
 
         </Grid>
 

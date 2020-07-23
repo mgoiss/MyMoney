@@ -10,13 +10,13 @@ using Xamarin.Forms.Xaml;
 
 namespace MyMoney.Telas
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TelaLogin : ContentPage
-	{
-		public TelaLogin ()
-		{
-			InitializeComponent ();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class TelaLogin : ContentPage
+    {
+        public TelaLogin()
+        {
+            InitializeComponent();
+        }
 
         private void Acessar(object sender, EventArgs args)
         {
@@ -24,13 +24,13 @@ namespace MyMoney.Telas
 
             int senha = 0;
 
-            if(txtSenha.Text != null)
+            if (txtSenha.Text != null)
             {
                 if (Int32.TryParse(txtSenha.Text.ToString(), out senha))
                 {
                     if (data.Login(int.Parse(txtSenha.Text)))
                     {
-                        App.Current.MainPage = new NavigationPage(new Abas()) { BarBackgroundColor = Color.FromHex("#E02041") };                    
+                        App.Current.MainPage = new NavigationPage(new Abas()) { BarBackgroundColor = Color.FromHex("#E02041") };
                     }
                     else
                     {
@@ -48,5 +48,5 @@ namespace MyMoney.Telas
                 DisplayAlert("Erro", "Informe uma senha!", "OK");
             }
         }
-	}
+    }
 }

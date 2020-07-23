@@ -16,7 +16,7 @@
                         <Label Text="Para começar precisamos criar sua conta" Margin="0, 0, 0, 10" HorizontalTextAlignment="Center" TextColor="#000000" FontSize="Large" LineHeight="1.0" FontFamily = "{StaticResource LightItalic}" />
 
                         <StackLayout Margin="10">
-                            <Entry Placeholder="Primeiro Nome" Keyboard="Text" x:Name="txtNome" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
+                            <Entry Placeholder="Primeiro Nome" Keyboard="Text" x:Name="txtUsuario" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
                             <Entry Placeholder="Senha Alfanumérica" Keyboard="Numeric" IsPassword="True"  x:Name="txtSenha" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
                         </StackLayout>
                         <StackLayout Margin="10">

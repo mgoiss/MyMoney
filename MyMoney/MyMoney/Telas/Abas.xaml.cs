@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using MyMoney.Banco;
+using System.Globalization;
 
 namespace MyMoney.Telas
 {
@@ -26,7 +27,10 @@ namespace MyMoney.Telas
         {
             DataBase data = new DataBase();
             double total = data.TotalDinheiro(); //Pegando o valor total de todas as contas
-            Total.Text = total.ToString(); //Exibindo o valor total das contas
+            //Total.Text = string.Format("{0:C}", total.ToString()); //Exibindo o valor total das contas    
+            Total.Text = total.ToString("C2", CultureInfo.CurrentCulture); //Exibindo o valor total das contas    
+            //Total.Text = total.ToString(); //Exibindo o valor total das contas    
+
         }
     }
 }

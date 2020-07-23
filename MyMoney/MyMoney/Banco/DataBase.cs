@@ -11,7 +11,6 @@ namespace MyMoney.Banco
     {
         private SQLiteConnection _conexao;
 
-        //TODO fazer uma função para backup do banco 
         //TODO fazer uma função para zerar o banco
         public DataBase()
         {
@@ -40,6 +39,13 @@ namespace MyMoney.Banco
             cont.UsuarioId = id;
 
             _conexao.Insert(cont);*/
+        }
+
+        public void ApagarDados()
+        {
+            _conexao.DropTable<Usuario>();
+            _conexao.DropTable<Conta>();
+            _conexao.DropTable<Transacao>();
         }
 
         /***********************************
@@ -165,6 +171,29 @@ namespace MyMoney.Banco
                 if (valor.TipoTransacao == "deposito")
                 {
                     valor.SimboloTransacao = '+';
+                    valor.TipoTransacao = "Depósito";
+                }
+                else
+                {
+                    valor.SimboloTransacao = '-';
+                    valor.TipoTransacao = "Saque";
+                }
+            }
+
+            return ListaTransacao;
+        }
+
+        //Filtrar por Tipo
+        public List<Transacao> FiltrarTransacaoConta(int idConta, string tipo)
+        {
+            //Pegando todas as transações de um determinada conta e ordenando pela data
+            List<Transacao> ListaTransacao = _conexao.Query<Transacao>("select * from Transacao where ContaId = ? and TipoTransacao = ? ORDER BY DataTransacao DESC", idConta, tipo); //Listando apenas as transações da conta
+
+            foreach (Transacao valor in ListaTransacao) //Laço para pecorrer a lista adcionando o simbolo para cada transação
+            {
+                if (valor.TipoTransacao == "deposito")
+                {
+                    valor.SimboloTransacao = '+';
                 }
                 else
                 {
@@ -174,6 +203,28 @@ namespace MyMoney.Banco
 
             return ListaTransacao;
         }
+
+        //Filtrar por Tipo
+        /*public List<Transacao> FiltrarDataTransacaoConta(int idConta, string data)
+        {
+            //Pegando todas as transações de um determinada conta e ordenando pela data
+            List<Transacao> ListaTransacao = _conexao.Query<Transacao>("select * from Transacao where ContaId = ? and DataTransacao like ? ORDER BY DataTransacao DESC", idConta, data+"%"); //Listando apenas as transações da conta
+
+            foreach (Transacao valor in ListaTransacao) //Laço para pecorrer a lista adcionando o simbolo para cada transação
+            {
+                if (valor.TipoTransacao == "deposito")
+                {
+                    valor.SimboloTransacao = '+';
+                }
+                else
+                {
+                    valor.SimboloTransacao = '-';
+                }
+            }
+
+            return ListaTransacao;
+        }*/
+
         //Função para retornar a ultima trasação pelo tipo dela
         public Transacao UltimoDepositoSaque(int idConta, string nomeCampo)
         {
