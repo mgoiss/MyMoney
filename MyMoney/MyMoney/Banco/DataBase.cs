@@ -47,6 +47,11 @@ namespace MyMoney.Banco
             _conexao.DropTable<Transacao>();
         }
 
+        public void ApagarTodaConta()
+        {
+            _conexao.Query<Conta>("DELETE FROM  Conta");
+        }
+
         /***********************************
          * Metodos Relacionados ao Usuário *
          * *********************************/

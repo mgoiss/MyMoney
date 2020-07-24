@@ -93,15 +93,15 @@ namespace MyMoney.Telas
             PopupNavigation.Instance.PushAsync(page); //Abrindo o POPUP
         }
 
-        //Finalizar a função Detalhe
-        private async void VerDetalhe(object sender, EventArgs e)
+        //Função para v o detalhe da transação por meio do click na Label
+        /*private async void VerDetalhe(object sender, EventArgs e)
         {
             Label lblDetalhe = (Label)sender;
             TapGestureRecognizer tapGest = ((TapGestureRecognizer)lblDetalhe.GestureRecognizers[0]);
             Transacao trans = tapGest.CommandParameter as Transacao;
 
             await PopupNavigation.Instance.PushAsync(new PopupDetalhe(trans, ContaAtual));
-        }
+        }*/
 
         private async void ApagarConta(object sender, EventArgs e)
         {
@@ -119,7 +119,7 @@ namespace MyMoney.Telas
 
                 App.Current.MainPage = new NavigationPage(new Abas()) { BarBackgroundColor = Color.FromHex("#E02041") }; //Chamando novamente a aba para que seja recarregado o valor total
             }
-        }
+        }        
 
         private async void EditarConta(object sender, EventArgs e)
         {
@@ -180,6 +180,15 @@ namespace MyMoney.Telas
                 }
             }
                         
+        }
+
+        private async void ListaContaToque(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item != null)
+            {
+                var selection = e.Item as Transacao;
+                await PopupNavigation.Instance.PushAsync(new PopupDetalhe(selection, ContaAtual));
+            }
         }
     }
 }

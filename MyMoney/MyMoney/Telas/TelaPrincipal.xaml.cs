@@ -17,6 +17,11 @@ namespace MyMoney.Telas
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TelaPrincipal : ContentPage
 	{
+
+        //TODO Colocar mascaras nas entry de valores
+        //TODO limitar a quantidade caracteres dos campos
+        //TODO Criar função para apagar toda as contas
+
 		public TelaPrincipal ()
 		{
 			InitializeComponent ();
@@ -33,7 +38,7 @@ namespace MyMoney.Telas
             ListaConta.ItemsSource = Contas;
         }
 
-        private void DetalheConta(object sender, EventArgs args)
+        /*private void DetalheConta(object sender, EventArgs args)
         {
             Label lblDetalhe = (Label)sender;
             TapGestureRecognizer tapGest = ((TapGestureRecognizer)lblDetalhe.GestureRecognizers[0]);
@@ -43,20 +48,16 @@ namespace MyMoney.Telas
 
 
             //App.Current.MainPage = new NavigationPage(new TelaDetalheConta());
-        }
+        }*/
 
-        private async void ApagarConta(object sender, EventArgs e)
+        private async void ApagarTodaConta(object sender, EventArgs e)
         {
-            Button btnDetalhe = (Button)sender;
-            TapGestureRecognizer tapGest = ((TapGestureRecognizer)btnDetalhe.GestureRecognizers[0]);
-            Conta conta = tapGest.CommandParameter as Conta;
-
-            bool resultado = await DisplayAlert(conta.NomeConta, "Deseja apagar a conta?", "Sim", "Não");
+            bool resultado = await DisplayAlert("Atenção", "Deseja realmente apagar todas as contas?", "Sim", "Não");
             if (resultado == true)
             {
                 DataBase data = new DataBase();
 
-                data.ApagarConta(conta);
+                data.ApagarTodaConta();
 
                 App.Current.MainPage = new NavigationPage(new Abas()) { BarBackgroundColor = Color.FromHex("#E02041") }; //Chamando novamente a aba para que seja recarregado o valor total
             }
@@ -64,9 +65,18 @@ namespace MyMoney.Telas
 
         private async void CriarConta(object sender, EventArgs e)
         {
-            await PopupNavigation.PushAsync(new PopupCriarConta());
+            await PopupNavigation.Instance.PushAsync(new PopupCriarConta());
 
             App.Current.MainPage = new NavigationPage(new Abas()) { BarBackgroundColor = Color.FromHex("#E02041") }; //Chamando novamente a aba para que seja recarregado o valor total
+        }
+
+        private void ListaContaToque(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item != null)
+            {
+                var selection = e.Item as Conta;
+                Navigation.PushAsync(new TelaDetalheConta(selection));
+            }
         }
     }
 }
