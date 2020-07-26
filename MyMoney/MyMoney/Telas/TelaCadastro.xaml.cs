@@ -24,21 +24,28 @@ namespace MyMoney.Telas
         {
             if (verificardados())
             {
-                DataBase data = new DataBase();
-
-                Usuario use = new Usuario(txtUsuario.Text, int.Parse(txtSenha.Text));
-
-                double valor = 0.0;
-                if (txtValor.Text != null || txtValor.Text != "") //Passando o valor para a variavel
+                try
                 {
-                    valor = double.Parse(txtValor.Text.Replace("R", "").Replace("$", "").Replace(" ", "").Replace(".", ""));
+                    DataBase data = new DataBase();
+
+                    Usuario use = new Usuario(txtUsuario.Text, int.Parse(txtSenha.Text));
+
+                    double valor = 0.0;
+                    if (txtValor.Text != null & txtValor.Text != "") //Passando o valor para a variavel
+                    {
+                        valor = double.Parse(txtValor.Text.Replace("R", "").Replace("$", "").Replace(" ", "").Replace(".", ""));
+                    }
+
+                    Conta cont = new Conta(txtNomeConta.Text, txtObjetivoConta.Text, valor);
+
+                    data.InserirUsuario(use, cont); //Criando o usuário
+
+                    App.Current.MainPage = new TelaLogin(); //Chamando a tela Login
                 }
-
-                Conta cont = new Conta(txtNomeConta.Text, txtObjetivoConta.Text, valor);
-
-                data.InserirUsuario(use, cont); //Criando o usuário
-
-                App.Current.MainPage = new TelaLogin(); //Chamando a tela Login
+                catch (Exception ex)
+                {
+                    DisplayAlert("Erro", ex.Message, "OK");
+                }                
             }
         }
 
