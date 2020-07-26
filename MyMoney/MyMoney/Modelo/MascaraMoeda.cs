@@ -41,7 +41,7 @@ namespace MyMoney.Modelo
                 {
                     if (!string.IsNullOrEmpty(texto))
                     {
-                        var textoFormatadoEmReais = (Decimal.Parse(texto) / 100).ToString("C", CultureInfo.GetCultureInfo("pt-BR"));
+                        var textoFormatadoEmReais = (Decimal.Parse(texto.Replace("R$ ", "").Replace(",", "").Replace(".", "")) / 100).ToString("C", CultureInfo.GetCultureInfo("pt-BR"));
                         texto = textoFormatadoEmReais;
                     }
 

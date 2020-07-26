@@ -9,31 +9,27 @@
         <ScrollView Orientation="Vertical">
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                <AbsoluteLayout Padding="10, 0, 10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="Center">
+                    <!--Imagem-->
+                    <Image Source="Logo.png" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 1" VerticalOptions="Center">
-                        <!--Imagem-->
-                        <Image Source="Logo.png" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Para começar precisamos criar sua conta" Margin="0, 0, 0, 10" HorizontalTextAlignment="Center" TextColor="#000000" FontSize="Large" LineHeight="1.0" FontFamily = "{StaticResource LightItalic}" />
 
-                        <Label Text="Para começar precisamos criar sua conta" Margin="0, 0, 0, 10" HorizontalTextAlignment="Center" TextColor="#000000" FontSize="Large" LineHeight="1.0" FontFamily = "{StaticResource LightItalic}" />
-
-                        <StackLayout Margin="10">
-                            <Entry Placeholder="Primeiro Nome" Keyboard="Text" x:Name="txtUsuario" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
-                            <Entry Placeholder="Senha Alfanumérica" Keyboard="Numeric" IsPassword="True"  x:Name="txtSenha" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
-                        </StackLayout>
-                        <StackLayout Margin="10">
-                            <Entry MaxLength="12" Placeholder="Nome Da Conta" Keyboard="Text"  x:Name="txtNomeConta" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
-                            <Entry Placeholder="Valor Inicial (Opicional)" Keyboard="Numeric" MaxLength="22"  x:Name="txtValor" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}">
-                                <Entry.Behaviors>
-                                    <local:MascaraMoeda/>
-                                </Entry.Behaviors>
-                            </Entry>
-                            <Editor Placeholder="Objetivo da Conta" Keyboard="Text" AutoSize="TextChanges" x:Name="txtObjetivoConta" HeightRequest="150" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
-                        </StackLayout>
-
+                    <StackLayout Margin="10">
+                        <Entry Placeholder="Primeiro Nome" Keyboard="Text" x:Name="txtUsuario" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
+                        <Entry Placeholder="Senha Alfanumérica" MaxLength="8" Keyboard="Numeric" IsPassword="True"  x:Name="txtSenha" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
+                    </StackLayout>
+                    <StackLayout Margin="10">
+                        <Entry MaxLength="12" Placeholder="Nome Da Conta" Keyboard="Text"  x:Name="txtNomeConta" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
+                        <Entry Placeholder="Valor Inicial (Opicional)" Keyboard="Numeric" MaxLength="22"  x:Name="txtValor" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}">
+                            <Entry.Behaviors>
+                                <local:MascaraMoeda/>
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Editor Placeholder="Objetivo da Conta" IsSpellCheckEnabled="True" TextChanged="TirarTeclado" MaxLength="300" Keyboard="Default" AutoSize="TextChanges" x:Name="txtObjetivoConta" HeightRequest="150" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
                     </StackLayout>
 
-                </AbsoluteLayout>
+                </StackLayout>
 
                 <Button BackgroundColor="#c12028" TextColor="White" BorderRadius="0" Text="VAMOS LÁ" Clicked="VamosLa" FontSize="Large" VerticalOptions="EndAndExpand" FontFamily = "{StaticResource BlackItalic}" />
 

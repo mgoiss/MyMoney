@@ -1,5 +1,6 @@
 ﻿using MyMoney.Banco;
 using MyMoney.Modelo;
+using MyMoney.Servicos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,6 +76,33 @@ namespace MyMoney.Telas
                 return true;
             }
 
+        }
+
+        private void TirarTeclado(object sender, TextChangedEventArgs e)
+        {
+            //Pegando o valor completo
+            string currentText = e.NewTextValue;
+            //Variável para pegar o valor anterio ao novo caractere
+            string lastText = "";
+
+            //Analisando se existe um valor antes do novo caractere
+            if (!String.IsNullOrEmpty(e.OldTextValue))
+            {
+                lastText = e.OldTextValue; //Pegano o valor antes do novo caractere
+            }
+
+            //Calculando o tamanho, aki ele vai calcular o tamanho de toda a string e caso tenha um quebra linha o valor do calculo vai ser 1
+            var currentNumb = currentText.Length - currentText.Replace(Environment.NewLine, string.Empty).Length;
+            //Aki vai realizar o mesmo calculo do anterio, porém com base nos caracteres digitando antes do novo caractere
+            var lastNumb = lastText.Length - lastText.Replace(Environment.NewLine, string.Empty).Length;
+
+            //Aki será verificado se o caculo do novo caractere é meior que o do anterio, pois isso significar que ele tem um quebra linha
+            if (currentNumb > lastNumb) 
+            {
+                //descriptionText.Text = lastText;
+                //descriptionText.Unfocus();
+                DependencyService.Get<IKeyboardHelper>().HideKeyboard();
+            }            
         }
     }
 }

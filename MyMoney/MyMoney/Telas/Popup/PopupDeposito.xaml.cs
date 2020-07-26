@@ -18,7 +18,6 @@ namespace MyMoney.Telas.Popup
         int idConta = 0;
         Conta Conta;
 
-        //TODO verificar se o valor do deposito é maior que 0
         public PopupDeposito(Conta conta)
 		{
 			InitializeComponent ();
@@ -79,7 +78,7 @@ namespace MyMoney.Telas.Popup
 
                     return false;
                 }
-                else if (double.Parse(txtValor.Text.Replace("R", "").Replace("$", "").Replace(" ", "").Replace(".", "")) <= 0) //campo valor
+                else if (double.Parse(txtValor.Text.Replace("R", "").Replace("$", "").Replace(" ", "").Replace(".", "")) <= 0) //Verificando se valor de deposito é maior que 0
                 {
                     DisplayAlert("Atenção", "O Valor do Deposito deve ser maior que 0!", "OK");
 

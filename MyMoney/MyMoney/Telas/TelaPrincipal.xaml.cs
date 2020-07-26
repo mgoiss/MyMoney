@@ -17,7 +17,6 @@ namespace MyMoney.Telas
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TelaPrincipal : ContentPage
 	{
-        //TODO limitar a quantidade caracteres dos campos
         //TODO Verificar a questão do Backup, que não tá sendo sobre posto
 
 		public TelaPrincipal ()

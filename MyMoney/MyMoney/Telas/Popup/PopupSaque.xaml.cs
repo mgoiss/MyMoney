@@ -18,7 +18,6 @@ namespace MyMoney.Telas.Popup
         int idConta = 0;
         Conta Conta;
 
-        //TODO verificar se o valor do saque é maior que 0
         public PopupSaque (Conta conta)
 		{
 			InitializeComponent ();

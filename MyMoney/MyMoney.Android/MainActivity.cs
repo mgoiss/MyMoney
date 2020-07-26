@@ -11,7 +11,7 @@ using Rg.Plugins.Popup.Services;
 
 namespace MyMoney.Droid
 {
-    [Activity(Label = "MyMoney", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.SensorPortrait)]
+    [Activity(Label = "MyMoney", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, WindowSoftInputMode = SoftInput.AdjustPan, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.SensorPortrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         private Bundle bundle;
