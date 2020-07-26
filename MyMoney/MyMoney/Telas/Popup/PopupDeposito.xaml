@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="MyMoney.Telas.Popup.PopupDeposito"
+             xmlns:local="clr-namespace:MyMoney.Modelo"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
              BackgroundInputTransparent="False" BackgroundColor="#c12028">
     <pages:PopupPage.Animation>
@@ -23,7 +24,11 @@
                  BackgroundColor="#EFEEF5">
         <Label Text="DEPÓSITO" Margin="0, 0, 0, 10" HorizontalTextAlignment="Center" TextColor="#000000" FontSize="Large" LineHeight="1.0" FontFamily = "{StaticResource BlackItalic}" />
 
-        <Entry Placeholder="Valor" Keyboard="Numeric"  x:Name="txtValor" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
+        <Entry Placeholder="Valor" Keyboard="Numeric" MaxLength="22"  x:Name="txtValor" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}">
+            <Entry.Behaviors>
+                <local:MascaraMoeda/>
+            </Entry.Behaviors>
+        </Entry>
         <Editor Placeholder="Descrição do Depósito" Keyboard="Text" AutoSize="TextChanges" x:Name="txtDescricao" HeightRequest="150" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
 
         <StackLayout Orientation="Horizontal" Margin="10" HorizontalOptions="EndAndExpand">

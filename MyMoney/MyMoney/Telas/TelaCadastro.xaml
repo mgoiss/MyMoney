@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyMoney.Modelo"
              x:Class="MyMoney.Telas.TelaCadastro"
              BackgroundColor="#EFEEF5">
+
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -21,7 +23,11 @@
                         </StackLayout>
                         <StackLayout Margin="10">
                             <Entry MaxLength="12" Placeholder="Nome Da Conta" Keyboard="Text"  x:Name="txtNomeConta" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
-                            <Entry Placeholder="Valor Inicial (Opicional)" Keyboard="Numeric"  x:Name="txtValor" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
+                            <Entry Placeholder="Valor Inicial (Opicional)" Keyboard="Numeric" MaxLength="22"  x:Name="txtValor" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}">
+                                <Entry.Behaviors>
+                                    <local:MascaraMoeda/>
+                                </Entry.Behaviors>
+                            </Entry>
                             <Editor Placeholder="Objetivo da Conta" Keyboard="Text" AutoSize="TextChanges" x:Name="txtObjetivoConta" HeightRequest="150" FontSize="Medium" BackgroundColor="#FFFFFF" FontFamily = "{StaticResource LightItalic}"/>
                         </StackLayout>
 

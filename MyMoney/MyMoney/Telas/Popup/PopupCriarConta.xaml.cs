@@ -17,7 +17,7 @@ namespace MyMoney.Telas.Popup
     public partial class PopupCriarConta
     {
         Conta ContaAtual;
-
+        
         public PopupCriarConta()
         {
             InitializeComponent();
@@ -65,7 +65,7 @@ namespace MyMoney.Telas.Popup
                     double valor = 0.0;
                     if (txtValor.Text != null && txtValor.Text != "")
                     {
-                        valor = double.Parse(txtValor.Text);
+                        valor = double.Parse(txtValor.Text.Replace("R", "").Replace("$", "").Replace(" ", "").Replace(".", ""));
                     }
 
                     //Criando um objeto do tipo conta
@@ -99,7 +99,7 @@ namespace MyMoney.Telas.Popup
             }
             else if (txtValor.Text != null && txtValor.Text != "")
             {
-                if (!(double.TryParse(txtValor.Text.ToString(), out valor)))
+                if (!(double.TryParse(txtValor.Text.Replace("R", "").Replace("$", "").Replace(" ", "").Replace(".", "").ToString(), out valor)))
                 {
                     DisplayAlert("Atenção", "O campo valor deve ser preenchido apenas com numero!", "OK");
 

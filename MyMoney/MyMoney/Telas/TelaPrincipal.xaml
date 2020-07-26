@@ -23,7 +23,7 @@
                 <Label Grid.Column="0" Grid.Row="0" Text="CONTAS: " TextColor="#000000"  FontFamily = "{StaticResource BlackItalic}" FontSize="30" HorizontalTextAlignment="Start" LineHeight="1.0" HorizontalOptions="Start" VerticalOptions="Center" />
 
                 <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="0" HorizontalOptions="End">
-                    <Button Padding="10" Image="Remover.png" BorderRadius="10" BorderWidth="1" BorderColor="#9A9A9A" BackgroundColor="#EFEEF5" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="End" Clicked="ApagarTodaConta"/>
+                    <Button Padding="10" Image="RemoverConta.png" BorderRadius="10" BorderWidth="1" BorderColor="#9A9A9A" BackgroundColor="#EFEEF5" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="End" Clicked="ApagarTodaConta"/>
                     <Button Padding="10" Image="Adicionar.png" BorderRadius="10" BorderWidth="1" BorderColor="#9A9A9A" BackgroundColor="#EFEEF5" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="End" Clicked="CriarConta"/>
                 </StackLayout>
 
@@ -63,8 +63,8 @@
                                                     <TapGestureRecognizer CommandParameter="{Binding .}"/>
                                                 </Button.GestureRecognizers>
                                             </Button>-->
-                                            
-                                            <Label Grid.Column="1" Grid.Row="0" TextColor="#E02041" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
+
+                                            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" TextColor="#E02041" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <!--<Span Text="R$" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource BlackItalic}"  FontSize="Large"/>-->
@@ -75,7 +75,8 @@
                                             </Label>
 
                                             <Label Grid.Column="0" Grid.Row="1" Text="Ultimo Depósito: " TextColor="#000000"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                                            <Label Grid.Column="1" Grid.Row="1" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
+                                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding DataDeposito , StringFormat='{0:dd/MM/yyyy}'}" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                                            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <!--<Span Text="R$" />-->
@@ -84,10 +85,9 @@
                                                 </Label.FormattedText>
                                             </Label>
 
-                                            <Label Grid.Column="1" Grid.Row="2" Text="{Binding DataDeposito , StringFormat='{0:dd/MM/yyyy}'}" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
                                             <Label Grid.Column="0" Grid.Row="3" Text="Ultimo Saque: " TextColor="#000000"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
-                                            <Label Grid.Column="1" Grid.Row="3" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
+                                            <Label Grid.Column="1" Grid.Row="3" Text="{Binding DataSaque, StringFormat='{0:dd/MM/yyyy}'}" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
+                                            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <!--<Span Text="R$" />-->
@@ -95,14 +95,12 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-
-                                            <Label Grid.Column="1" Grid.Row="4" Text="{Binding DataSaque, StringFormat='{0:dd/MM/yyyy}'}" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="End" VerticalOptions="Center" />
-
-                                            <Label Grid.Column="1" Grid.Row="5" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="10" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End">
-                                                <!--<Label.GestureRecognizers>
+                                            
+                                            <!--<Label Grid.Column="1" Grid.Row="5" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="10" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End">
+                                                <Label.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="DetalheConta" CommandParameter="{Binding .}"/>
-                                                </Label.GestureRecognizers>-->
-                                            </Label>
+                                                </Label.GestureRecognizers>
+                                            </Label>-->
 
                                             <!--<Button Grid.Column="1" Grid.Row="5" Padding="10" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End" Clicked="DetalheConta"/>-->
                                         </Grid>

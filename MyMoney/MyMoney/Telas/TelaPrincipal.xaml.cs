@@ -17,10 +17,8 @@ namespace MyMoney.Telas
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TelaPrincipal : ContentPage
 	{
-
-        //TODO Colocar mascaras nas entry de valores
         //TODO limitar a quantidade caracteres dos campos
-        //TODO Criar função para apagar toda as contas
+        //TODO Verificar a questão do Backup, que não tá sendo sobre posto
 
 		public TelaPrincipal ()
 		{

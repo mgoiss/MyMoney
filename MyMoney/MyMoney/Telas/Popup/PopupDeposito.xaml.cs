@@ -18,6 +18,7 @@ namespace MyMoney.Telas.Popup
         int idConta = 0;
         Conta Conta;
 
+        //TODO verificar se o valor do deposito é maior que 0
         public PopupDeposito(Conta conta)
 		{
 			InitializeComponent ();
@@ -72,9 +73,15 @@ namespace MyMoney.Telas.Popup
             {
                 double senha;
 
-                if (!(double.TryParse(txtValor.Text.ToString(), out senha))) //VERIFICANDO SE O CAMPO VALOR FOI PREENCHIDO COM NUMERO
+                if (!(double.TryParse(txtValor.Text.Replace("R", "").Replace("$", "").Replace(" ", "").Replace(".", "").ToString(), out senha))) //VERIFICANDO SE O CAMPO VALOR FOI PREENCHIDO COM NUMERO
                 {
                     DisplayAlert("Atenção", "O campo valor deve ser preenchido apenas com numero!", "OK");
+
+                    return false;
+                }
+                else if (double.Parse(txtValor.Text.Replace("R", "").Replace("$", "").Replace(" ", "").Replace(".", "")) <= 0) //campo valor
+                {
+                    DisplayAlert("Atenção", "O Valor do Deposito deve ser maior que 0!", "OK");
 
                     return false;
                 }
@@ -92,7 +99,7 @@ namespace MyMoney.Telas.Popup
                 DataBase data = new DataBase();
 
                 //Criando um objeto do tipo transação
-                Transacao deposito = new Transacao(double.Parse(txtValor.Text), txtDescricao.Text, DateTime.Now, "deposito", idConta);
+                Transacao deposito = new Transacao(double.Parse(txtValor.Text.Replace("R", "").Replace("$", "").Replace(" ", "").Replace(".", "")), txtDescricao.Text, DateTime.Now, "deposito", idConta);
 
                 //Inserindo a transação no banco
                 data.InserirTransacao(deposito, Conta.ValorConta + deposito.ValorTransacao);

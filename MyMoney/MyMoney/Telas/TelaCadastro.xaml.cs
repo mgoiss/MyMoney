@@ -30,7 +30,7 @@ namespace MyMoney.Telas
                 double valor = 0.0;
                 if (txtValor.Text != null || txtValor.Text != "") //Passando o valor para a variavel
                 {
-                    valor = double.Parse(txtValor.Text);
+                    valor = double.Parse(txtValor.Text.Replace("R", "").Replace("$", "").Replace(" ", "").Replace(".", ""));
                 }
 
                 Conta cont = new Conta(txtNomeConta.Text, txtObjetivoConta.Text, valor);
@@ -61,7 +61,7 @@ namespace MyMoney.Telas
             }
             else if ((txtValor.Text != null) & txtValor.Text != "") //Verificando se foi infoemado algum valor
             {
-                if (!(Double.TryParse(txtValor.Text.ToString(), out valor))) //Analisando se foi informado um valor numerico
+                if (!(Double.TryParse(txtValor.Text.Replace("R", "").Replace("$", "").Replace(" ", "").Replace(".", "").ToString(), out valor))) //Analisando se foi informado um valor numerico
                 {
                     DisplayAlert("Erro", "O campo valor deve ser preenchido apenas com numero!", "OK");
 

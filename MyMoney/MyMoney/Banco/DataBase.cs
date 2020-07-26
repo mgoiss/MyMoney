@@ -50,6 +50,7 @@ namespace MyMoney.Banco
         public void ApagarTodaConta()
         {
             _conexao.Query<Conta>("DELETE FROM  Conta");
+            _conexao.Query<Transacao>("DELETE FROM Transacao");
         }
 
         /***********************************

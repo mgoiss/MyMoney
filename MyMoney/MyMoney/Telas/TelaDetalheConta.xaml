@@ -111,7 +111,7 @@
                 </StackLayout>
             </Grid>
 
-            <!--Depositos de Saques da Conta-->
+            <!--Depositos e Saques da Conta-->
             <ScrollView>
                 <ListView x:Name="ListaConta" HasUnevenRows="True" SelectionMode="None" ItemTapped="ListaContaToque">
                     <ListView.ItemTemplate>
@@ -138,7 +138,7 @@
                                             <Label Grid.Column="1" Grid.Row="0" Text="{Binding TipoTransacao}" TextColor="#E02041"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center" />
                                             <Label Grid.Column="2" Grid.Row="0" Text="{Binding DataTransacao, StringFormat='{0:dd/MMM}'}" TextColor="#848387"  FontFamily = "{StaticResource LightItalic}" FontSize="Medium" HorizontalTextAlignment="Center"  HorizontalOptions="End" VerticalOptions="End" />
 
-                                            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center">
+                                            <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" TextColor="#848387"  FontFamily = "{StaticResource BlackItalic}" FontSize="Medium" HorizontalTextAlignment="Start"  HorizontalOptions="Start" VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <!--<Span Text="R$" />-->
@@ -147,11 +147,11 @@
                                                 </Label.FormattedText>
                                             </Label>
 
-                                            <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="10" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End">
-                                                <!--<Label.GestureRecognizers>
+                                            <!--<Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Text="Ver Mais Detalhes  ->" TextColor="#E02041" FontFamily = "{StaticResource LightItalic}" FontSize="10" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End">
+                                                <Label.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="VerDetalhe" CommandParameter="{Binding .}"/>
-                                                </Label.GestureRecognizers>-->
-                                            </Label>
+                                                </Label.GestureRecognizers>
+                                            </Label>-->
                                         </Grid>
                                     </pancake:PancakeView>
                                 </StackLayout>
