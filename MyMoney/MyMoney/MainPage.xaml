@@ -1,86 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-            xmlns:controle="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
-            xmlns:ci="clr-namespace:Xamarin.Forms.PageControl;assembly=Xamarin.Forms.PageControl"
+            xmlns:viewmodels="clr-namespace:MyMoney.Modelo"
             x:Class="MyMoney.MainPage" BackgroundColor="#EFEEF5">
+    <ContentPage.BindingContext>
+        <viewmodels:ModeloVisual />
+    </ContentPage.BindingContext>
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-    <ContentPage.Content>
+        <CarouselView ItemsSource="{Binding Itens}" IndicatorView="indicatorView">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <AbsoluteLayout Padding="10, 0, 10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}">
 
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
-            <controle:CarouselView ItemsSource="{Binding Itens}"
-                                   AbsoluteLayout.LayoutFlags="All" Position="{Binding Position, Mode=TwoWay}">
-
-                <controle:CarouselView.ItemTemplate>
-
-                    <DataTemplate>
-
-                        <AbsoluteLayout Padding="10, 0, 10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}">
-
-                            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 1" VerticalOptions="Center">
-                                <StackLayout Margin="30">
-                                    <!--Titulo-->
-                                    <Label Text="{Binding Titulo}" HorizontalTextAlignment="Center" TextColor="{Binding TituloCor}" FontSize="Large" LineHeight="0.7" FontFamily = "{StaticResource BlackItalic}" />
-                                </StackLayout>
-
-                                <StackLayout VerticalOptions="Center" Margin="15">
-                                    <!--Texto 1-->
-                                    <Label HorizontalTextAlignment="Center" FontSize="Large" LineHeight="1.0">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Detalhe}" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource LightItalic}"  FontSize="Large"/>
-
-                                                <Span Text="{Binding DetalheNegrito1}" TextColor="{Binding TituloCor}" FontFamily = "{StaticResource BlackItalic}" FontSize="Large"/>
-
-                                                <Span Text="{Binding DetalheContinua}" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource LightItalic}" FontSize="Large"/>
-
-                                                <Span Text="{Binding DetalheNegrito2}" TextColor="{Binding TituloCor}" FontFamily = "{StaticResource BlackItalic}" FontSize="Large"/>
-
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-
-                                <StackLayout Margin="10, 20, 10, 20" VerticalOptions="CenterAndExpand">
-                                    <!--Imagem-->
-                                    <Image Source="{Binding Imagem}" />
-                                </StackLayout>
-
-                                <StackLayout VerticalOptions="Center" Margin="15">
-                                    <!--Texto 2-->
-                                    <Label HorizontalTextAlignment="Center" FontSize="Large" LineHeight="1.0">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Detalhe2}" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource LightItalic}" FontSize="Large"/>
-
-                                                <Span Text="{Binding Detalhe2Negrito1}" TextColor="{Binding TituloCor}" FontFamily = "{StaticResource BlackItalic}" FontSize="Large"/>
-
-                                                <Span Text="{Binding Detalhe2Continua}" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource LightItalic}" FontSize="Large"/>
-
-                                                <Span Text="{Binding Detalhe2Negrito2}" TextColor="{Binding TituloCor}" FontFamily = "{StaticResource BlackItalic}" FontSize="Large"/>
-
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
+                        <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 1" VerticalOptions="Center">
+                            <StackLayout Margin="30">
+                                <!--Titulo-->
+                                <Label Text="{Binding Titulo}" HorizontalTextAlignment="Center" TextColor="{Binding TituloCor}" FontSize="Large" LineHeight="0.7" FontFamily = "{StaticResource BlackItalic}" />
                             </StackLayout>
 
-                        </AbsoluteLayout>
+                            <StackLayout VerticalOptions="Center" Margin="15">
+                                <!--Texto 1-->
+                                <Label HorizontalTextAlignment="Center" FontSize="Large" LineHeight="1.0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Detalhe}" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource LightItalic}"  FontSize="Large"/>
 
-                    </DataTemplate>
+                                            <Span Text="{Binding DetalheNegrito1}" TextColor="{Binding TituloCor}" FontFamily = "{StaticResource BlackItalic}" FontSize="Large"/>
 
-                </controle:CarouselView.ItemTemplate>
-            </controle:CarouselView>
+                                            <Span Text="{Binding DetalheContinua}" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource LightItalic}" FontSize="Large"/>
 
-            <ci:PageControl ShowIndicator="true" IndicatorHeight="12" IndicatorWidth="12" UnselectedIndicator="unselected_circle.png"
-                                       SelectedIndicator="selected_circle.png" Position="{Binding Position}" ItemsSource="{Binding Itens}" />
-            <Button BackgroundColor="#c12028" TextColor="White" BorderRadius="0" Text="Começar" FontSize="Large" Clicked="Comecar" FontFamily = "{StaticResource BlackItalic}" />
+                                            <Span Text="{Binding DetalheNegrito2}" TextColor="{Binding TituloCor}" FontFamily = "{StaticResource BlackItalic}" FontSize="Large"/>
 
-        </StackLayout>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
 
-    </ContentPage.Content>
+                            <StackLayout Margin="10, 20, 10, 20" VerticalOptions="CenterAndExpand">
+                                <!--Imagem-->
+                                <Image Source="{Binding Imagem}" />
+                            </StackLayout>
 
+                            <StackLayout VerticalOptions="Center" Margin="15">
+                                <!--Texto 2-->
+                                <Label HorizontalTextAlignment="Center" FontSize="Large" LineHeight="1.0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Detalhe2}" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource LightItalic}" FontSize="Large"/>
+
+                                            <Span Text="{Binding Detalhe2Negrito1}" TextColor="{Binding TituloCor}" FontFamily = "{StaticResource BlackItalic}" FontSize="Large"/>
+
+                                            <Span Text="{Binding Detalhe2Continua}" TextColor="{Binding DetalheCor}" FontFamily = "{StaticResource LightItalic}" FontSize="Large"/>
+
+                                            <Span Text="{Binding Detalhe2Negrito2}" TextColor="{Binding TituloCor}" FontFamily = "{StaticResource BlackItalic}" FontSize="Large"/>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+
+                    </AbsoluteLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+
+        <IndicatorView x:Name="indicatorView" MaximumVisible="6" Margin="0,0,0,0" IndicatorColor="LightGray" SelectedIndicatorColor="DarkGray" HorizontalOptions="Center" />
+        <Button BackgroundColor="#c12028" TextColor="White" BorderRadius="0" Text="Começar" FontSize="Large" Clicked="Comecar" FontFamily = "{StaticResource BlackItalic}" />
+
+    </StackLayout>
 </ContentPage>
     
     

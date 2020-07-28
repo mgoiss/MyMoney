@@ -16,8 +16,6 @@ namespace MyMoney
         public MainPage()
         {
             InitializeComponent();
-
-            this.BindingContext = new ModeloVisual();
         }
 
         private void Comecar(object sender, EventArgs e)

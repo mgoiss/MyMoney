@@ -12,8 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
-    <PackageReference Include="Xamarin.Forms" Version="3.6.0.220655" />
-    <PackageReference Include="Xamarin.Forms.CarouselView" Version="2.3.0-pre2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
     <PackageReference Include="Xamarin.Forms.PageControl" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.7" />
   </ItemGroup>

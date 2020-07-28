@@ -32,7 +32,7 @@ namespace MyMoney.Droid
             if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
             {
                 // fazer algo se existem algumas páginas no `PopupStack`
-                PopupNavigation.PopAsync();
+                PopupNavigation.Instance.PopAsync();
             }
             else
             {

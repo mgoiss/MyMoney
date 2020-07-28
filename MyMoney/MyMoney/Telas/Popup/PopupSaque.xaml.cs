@@ -51,19 +51,19 @@ namespace MyMoney.Telas.Popup
             {
                 if ((txtValor.Text == "" || txtValor.Text == null) && (txtDescricao.Text == "" || txtDescricao.Text == null)) //Todos os campos
                 {
-                    DisplayAlert("Atenção", "Prencheda todos os Dados!", "OK");
+                    DisplayAlert("Atenção", "Preencha todos os Dados!", "OK");
 
                     return false;
                 }
                 else if ((txtValor.Text == "" || txtValor.Text == null)) //campo valor
                 {
-                    DisplayAlert("Atenção", "Prencheda o valor!", "OK");
+                    DisplayAlert("Atenção", "Preencha o valor!", "OK");
 
                     return false;
                 }                
                 else //if(txtDescricao.Text == "" || txtDescricao.Text == null) //campo descrição
                 {
-                    DisplayAlert("Atenção", "Prencheda a descrição!", "OK");
+                    DisplayAlert("Atenção", "Preencha a descrição!", "OK");
 
                     return false;
                 }
