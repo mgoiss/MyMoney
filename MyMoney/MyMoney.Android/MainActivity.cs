@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Content.Res;
 using Rg.Plugins.Popup.Services;
+using CarouselView.FormsPlugin.Android;
 
 namespace MyMoney.Droid
 {
@@ -25,6 +26,8 @@ namespace MyMoney.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
             Rg.Plugins.Popup.Popup.Init(this, bundle);
+
+            CarouselViewRenderer.Init();
         }
 
         public override void OnBackPressed()

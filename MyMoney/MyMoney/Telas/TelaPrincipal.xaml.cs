@@ -18,7 +18,13 @@ namespace MyMoney.Telas
 	public partial class TelaPrincipal : ContentPage
 	{
         //TODO Verificar a questão do Backup, que não tá sendo sobre posto
-
+        //TODO Corrigir o bug da mascara: quando digito um valor e quero apaga-lo, caso eu vá apagando até o final o app quebra 
+        //TODO reestruturar as classes
+        //TODO Alterar a forma como é chamada os PopUp
+        //TODO fazer as ListViwer Carregar gradativamente
+        //TODO Login por Digital
+        //TODO Criar um metodo para esqueci a senha
+        //TODO fazer efeito de carregamento
 		public TelaPrincipal ()
 		{
 			InitializeComponent ();

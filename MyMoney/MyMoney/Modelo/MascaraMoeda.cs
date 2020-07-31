@@ -25,28 +25,47 @@ namespace MyMoney.Modelo
         {
             if (!string.IsNullOrWhiteSpace(args.NewTextValue))
             {
+
                 bool ehCallback = false;
                 string texto = args.NewTextValue;
+                double valor;
 
-                if (texto.Contains("R$"))
+
+                if (!(Double.TryParse(texto.Replace("R$ ", "").Replace(".", "").ToString(), out valor))) //Analisando se foi informado um valor numerico
                 {
-                    var valorNovoEmDecimal = ConverterReaisParaDecimal(texto);
-                    var valorAntigoEmDecimal = args.OldTextValue.Contains("R$") ? ConverterReaisParaDecimal(args.OldTextValue) : int.Parse(args.OldTextValue);
-                    ehCallback = valorNovoEmDecimal == valorAntigoEmDecimal;
-
-                    texto = valorNovoEmDecimal.ToString();
+                    ((Entry)sender).Text = ((Entry)sender).Text.Replace(texto, "");
                 }
-
-                if (!ehCallback)
+                else if ((texto == "0" || texto == " " || texto.Replace("R$ ", "") == "0,0") & texto.Replace("R$ ", "").Replace(".", "").Length <= 3) //Verificando se foi digitado 0 ou um valor nulo, pois caso tenha sido verdadeiro a mascara tbm colocara "R$ 0,00"
                 {
-                    if (!string.IsNullOrEmpty(texto))
+                    ((Entry)sender).Text = "R$ 0,00";
+                }
+                else
+                {
+                    if (texto.Contains("R$"))
                     {
-                        var textoFormatadoEmReais = (Decimal.Parse(texto.Replace("R$ ", "").Replace(",", "").Replace(".", "")) / 100).ToString("C", CultureInfo.GetCultureInfo("pt-BR"));
-                        texto = textoFormatadoEmReais;
+                        var valorNovoEmDecimal = ConverterReaisParaDecimal(texto);
+                        var valorAntigoEmDecimal = args.OldTextValue.Contains("R$") ? ConverterReaisParaDecimal(args.OldTextValue) : int.Parse(args.OldTextValue);
+                        ehCallback = valorNovoEmDecimal == valorAntigoEmDecimal;
+
+                        texto = valorNovoEmDecimal.ToString();
                     }
 
-                    ((Entry)sender).Text = texto;
+                    if (!ehCallback)
+                    {
+                        if (!string.IsNullOrEmpty(texto))
+                        {
+                            var textoFormatadoEmReais = (Decimal.Parse(texto.Replace("R$ ", "").Replace(",", "").Replace(".", "")) / 100).ToString("C", CultureInfo.GetCultureInfo("pt-BR"));
+                            texto = textoFormatadoEmReais;
+                        }
+
+                        ((Entry)sender).Text = texto;
+                    }
                 }
+
+                //Verificando se o texto tem menos q 4 caracteres, caso seja verdadeiro a mascarar colocara "R$ 0,00" evitando assim que o usuário apague tudo
+                //Verificando se foi digitado 0 ou um valor nulo, pois caso tenha sido verdadeiro a mascara tbm colocara "R$ 0,00"
+                //if ((texto != "0" & texto != " ") || texto.Length < 3)                 
+
             }
         }
 

@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.1062
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMoney.Android", "MyMoney\MyMoney.Android\MyMoney.Android.csproj", "{6F3ADDB9-98E8-485B-B543-71222E83B050}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMoney", "MyMoney\MyMoney\MyMoney.csproj", "{FCB6B114-AA80-4371-9F11-647ED648761E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMoney", "MyMoney\MyMoney\MyMoney.csproj", "{FCB6B114-AA80-4371-9F11-647ED648761E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using MyMoney.Telas;
 using MyMoney.Banco;
+using System.Diagnostics;
 
 namespace MyMoney
 {
     public partial class MainPage : ContentPage
     {
+
         public MainPage()
         {
-            InitializeComponent();
-        }
+            InitializeComponent();            
+        }       
 
         private void Comecar(object sender, EventArgs e)
         {

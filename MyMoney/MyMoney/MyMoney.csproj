@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
     <PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
